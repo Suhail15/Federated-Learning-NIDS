@@ -109,4 +109,3 @@ python -m compileall -q client.py server.py model.py data.py experiments
 - [TensorFlow 2.15.1](https://pypi.org/project/tensorflow/2.15.1/)
 
 Capstone project by [Suhail Hussain](https://github.com/Suhail15).
-

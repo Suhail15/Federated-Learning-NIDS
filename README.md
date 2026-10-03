@@ -1,10 +1,52 @@
 # Federated Learning for Network Intrusion Detection
 
-A capstone research project exploring **network intrusion detection on NSL-KDD** using a deep neural network, federated training with Flower, and GAN-based augmentation of underrepresented attack classes.
+**An NSL-KDD capstone combining a five-class neural classifier, Flower federated training, and GAN augmentation experiments.**
 
-The project brings together three questions: how to classify network attacks, how to train a shared model across clients, and how synthetic data might help with severe class imbalance.
+Network intrusion detection has two challenges explored here: learning from records distributed across clients and recognising attack classes with very few examples. This project implements a local federated training workflow and investigates synthetic minority-class data. It demonstrates model integration and data-validation work; whether augmentation or the experimental aggregation improves detection remains unverified.
 
 **Python · TensorFlow / Keras · Flower · pandas · scikit-learn · NSL-KDD**
+
+Capstone by [Suhail Hussain](https://github.com/Suhail15) · Status: research prototype
+
+[Evidence](#evidence-and-validation) · [Architecture](#architecture) · [Run locally](#run-locally) · [Limitations](#limitations-and-evaluation-boundaries) · [Planned portfolio additions](docs/portfolio-additions.md)
+
+## Project at a glance
+
+| Question | Implementation | What is established |
+| --- | --- | --- |
+| Can clients train a shared intrusion classifier? | Flower clients train a Keras DNN on disjoint partitions of one prepared CSV | A recorded two-client smoke test completed one training/evaluation round |
+| How is class imbalance explored? | GAN notebooks generate samples for Probe, R2L, and U2R | Augmentation volumes are documented; detection benefit is unverified |
+| How are aggregation approaches exposed? | Standard FedAvg option alongside the original capstone momentum rule | Both options exist in code; no comparative performance claim |
+
+## Engineering work demonstrated
+
+- **Model integration:** a 23-feature, five-class DNN connected to Flower client training and server aggregation.
+- **Data integrity:** deterministic client partitions, input validation, and tests for overlap, coverage, and train/validation separation.
+- **Portable execution:** configurable entry points replace machine-specific paths and address overlapping partitions and dropped remainder rows in the historical workflow.
+- **Research judgement:** explicit separation of workflow validation, dataset statistics, and model performance, including the historical GAN leakage issue.
+
+## Evidence and validation
+
+Previously recorded validation environment: **macOS ARM64 / Python 3.9**.
+
+| Evidence | Verified result | Scope |
+| --- | --- | --- |
+| Partition and input tests | **3/3 passed** | Checks disjoint, complete, repeatable partitions; train/validation separation; and rejection of invalid labels and client IDs |
+| Python compilation | All Python scripts compiled successfully | Syntax validation only |
+| Federated smoke test | **2 clients**, **1 training/evaluation round**, **1,000 sampled rows**, **0 client failures** | Confirms the local training/evaluation workflow completes; not a full training run or benchmark |
+| Dataset statistics | Before/after class counts are reported [below](#data-and-class-imbalance) | Describes class imbalance and augmentation volume, not detection quality |
+| Model performance | **No benchmark accuracy claimed** | Client accuracy is local validation accuracy, not official NSL-KDD test-set accuracy |
+
+**No benchmark accuracy, generalization result, GAN improvement, or aggregation improvement is established.** Saved run logs, screenshots, and benchmark artifacts are not currently included; the table records the existing validation evidence. See the [artifact checklist](docs/portfolio-additions.md) for the evidence to add.
+
+The smoke test used the local augmented CSV. Because augmentation preceded the validation split, these results do not establish generalization or an improvement from GAN augmentation or the experimental aggregation rule. A benchmark requires splitting original records before preprocessing/GAN training and evaluating on untouched real records.
+
+Re-run the automated checks:
+
+```bash
+python -m unittest discover -s tests -v
+python -m compileall -q client.py server.py model.py data.py experiments
+```
 
 ## Architecture
 
@@ -38,6 +80,28 @@ The local demonstration partitions one prepared CSV across processes. Flower exc
 | `experiments/` | Earlier capstone scripts retained for research context |
 | `tests/` | Checks for partition isolation, repeatability, and label validation |
 
+## Data and class imbalance
+
+The local prepared files contain these class counts; these are **dataset statistics, not model performance results**:
+
+| Label | Class | Before augmentation | Augmented CSV |
+| --- | --- | ---: | ---: |
+| 0 | Normal | 67,343 | 67,343 |
+| 1 | Denial of Service (DoS) | 45,927 | 45,927 |
+| 2 | Probe | 11,656 | 45,927 |
+| 3 | Remote to Local (R2L) | 995 | 45,927 |
+| 4 | User to Root (U2R) | 52 | 45,927 |
+
+The GAN notebook trains a generator and discriminator and generates additional samples for classes 2–4. The final CSV retains more normal examples than any individual attack class.
+
+## Limitations and evaluation boundaries
+
+- **Experimental aggregation:** the original server adds an exponential moving average of the aggregated weights to those weights. `server.py` preserves this rule as `capstone-momentum`; it is not a claim to implement standard FedAvgM. The default coefficient is 0.9.
+- **Evaluation scope:** client accuracy is local validation accuracy, aggregated by validation sample count. It is not official NSL-KDD test-set accuracy. No benchmark accuracy is claimed here.
+- **Augmentation leakage:** the historical augmented CSV was generated before the client validation split. A rigorous study must split original records before fitting preprocessing or training a GAN, then evaluate on untouched real records.
+- **Historical notebooks:** preprocessing experiments include both binary and multiclass work and are not a single verified, end-to-end recipe for rebuilding the supplied five-class CSV. Some notebook cells require intermediate files or manual path adjustments. See [notebook notes](notebooks/README.md).
+- **Packaging changes:** the portable entry points reuse the capstone DNN and aggregation rule, add command-line configuration and input validation, and correct client partition overlap and dropped-remainder risks. Historical scripts are kept separately; notebook outputs were cleared before publication.
+
 ## Run locally
 
 Use **Python 3.9–3.11**. Dependencies target the older Flower/Keras APIs used by the project.
@@ -70,49 +134,6 @@ python client.py --client-id 1 --num-clients 2
 The server waits for both clients. Every client must use the **same CSV, seed, and client count**, with a unique client ID. Each client reserves 20% of its own partition for validation. Use `--data /path/to/prepared.csv` to select another prepared file.
 
 For a short run, use `--rounds 1 --epochs 1`. For a standard FedAvg comparison, add `--strategy fedavg` to the server command. Four-client runs use `--num-clients 4` everywhere and IDs `0`, `1`, `2`, `3`.
-
-## Data and class imbalance
-
-The local prepared files contain these class counts; these are **dataset statistics, not model performance results**:
-
-| Label | Class | Before augmentation | Augmented CSV |
-| --- | --- | ---: | ---: |
-| 0 | Normal | 67,343 | 67,343 |
-| 1 | Denial of Service (DoS) | 45,927 | 45,927 |
-| 2 | Probe | 11,656 | 45,927 |
-| 3 | Remote to Local (R2L) | 995 | 45,927 |
-| 4 | User to Root (U2R) | 52 | 45,927 |
-
-The GAN notebook trains a generator and discriminator and generates additional samples for classes 2–4. The final CSV retains more normal examples than any individual attack class.
-
-## Research notes
-
-- **Experimental aggregation:** the original server adds an exponential moving average of the aggregated weights to those weights. `server.py` preserves this rule as `capstone-momentum`; it is not a claim to implement standard FedAvgM. The default coefficient is 0.9.
-- **Evaluation scope:** client accuracy is local validation accuracy, aggregated by validation sample count. It is not official NSL-KDD test-set accuracy. No benchmark accuracy is claimed here.
-- **Augmentation leakage:** the historical augmented CSV was generated before the client validation split. A rigorous study must split original records before fitting preprocessing or training a GAN, then evaluate on untouched real records.
-- **Historical notebooks:** preprocessing experiments include both binary and multiclass work and are not a single verified, end-to-end recipe for rebuilding the supplied five-class CSV. Some notebook cells require intermediate files or manual path adjustments. See [notebook notes](notebooks/README.md).
-- **Packaging changes:** the portable entry points reuse the capstone DNN and aggregation rule, add command-line configuration and input validation, and correct client partition overlap and dropped-remainder risks. Historical scripts are kept separately; notebook outputs were cleared before publication.
-
-## Results and Validation
-
-Recorded validation environment: **macOS ARM64 / Python 3.9**.
-
-| Evidence | Verified result | Scope |
-| --- | --- | --- |
-| Partition and input tests | **3/3 passed** | Checks disjoint, complete, repeatable partitions; train/validation separation; and rejection of invalid labels and client IDs |
-| Python compilation | All Python scripts compiled successfully | Syntax validation only |
-| Federated smoke test | **2 clients**, **1 training/evaluation round**, **1,000 sampled rows**, **0 client failures** | Confirms the local training/evaluation workflow completes; not a full training run or benchmark |
-| Dataset statistics | Before/after class counts are reported [above](#data-and-class-imbalance) | Describes class imbalance and augmentation volume, not detection quality |
-| Model performance | **No benchmark accuracy claimed** | Client accuracy is local validation accuracy, not official NSL-KDD test-set accuracy |
-
-The smoke test used the local augmented CSV. Because augmentation preceded the validation split, these results do not establish generalization or an improvement from GAN augmentation or the experimental aggregation rule. A benchmark requires splitting original records before preprocessing/GAN training and evaluating on untouched real records.
-
-Re-run the automated checks:
-
-```bash
-python -m unittest discover -s tests -v
-python -m compileall -q client.py server.py model.py data.py experiments
-```
 
 ## References
 

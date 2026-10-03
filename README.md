@@ -93,9 +93,21 @@ The GAN notebook trains a generator and discriminator and generates additional s
 - **Historical notebooks:** preprocessing experiments include both binary and multiclass work and are not a single verified, end-to-end recipe for rebuilding the supplied five-class CSV. Some notebook cells require intermediate files or manual path adjustments. See [notebook notes](notebooks/README.md).
 - **Packaging changes:** the portable entry points reuse the capstone DNN and aggregation rule, add command-line configuration and input validation, and correct client partition overlap and dropped-remainder risks. Historical scripts are kept separately; notebook outputs were cleared before publication.
 
-## Checks
+## Results and Validation
 
-Validated on macOS ARM64 / Python 3.9: all three partition/input tests pass, all Python scripts compile, and two clients completed one training/evaluation round on a 1,000-row sample of the local augmented CSV with zero client failures. This is a functional smoke test, not a full training run or a benchmark.
+Recorded validation environment: **macOS ARM64 / Python 3.9**.
+
+| Evidence | Verified result | Scope |
+| --- | --- | --- |
+| Partition and input tests | **3/3 passed** | Checks disjoint, complete, repeatable partitions; train/validation separation; and rejection of invalid labels and client IDs |
+| Python compilation | All Python scripts compiled successfully | Syntax validation only |
+| Federated smoke test | **2 clients**, **1 training/evaluation round**, **1,000 sampled rows**, **0 client failures** | Confirms the local training/evaluation workflow completes; not a full training run or benchmark |
+| Dataset statistics | Before/after class counts are reported [above](#data-and-class-imbalance) | Describes class imbalance and augmentation volume, not detection quality |
+| Model performance | **No benchmark accuracy claimed** | Client accuracy is local validation accuracy, not official NSL-KDD test-set accuracy |
+
+The smoke test used the local augmented CSV. Because augmentation preceded the validation split, these results do not establish generalization or an improvement from GAN augmentation or the experimental aggregation rule. A benchmark requires splitting original records before preprocessing/GAN training and evaluating on untouched real records.
+
+Re-run the automated checks:
 
 ```bash
 python -m unittest discover -s tests -v

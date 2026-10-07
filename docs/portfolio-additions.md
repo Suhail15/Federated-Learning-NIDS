@@ -4,7 +4,7 @@ The [controlled benchmark](../results/benchmark/nsl-kdd-v1/report.md) is now com
 
 ## 1. Repository metadata
 
-- **About description:** `NSL-KDD intrusion-detection capstone: TensorFlow DNN, Flower federated training, and GAN augmentation experiments. Validated local workflow; benchmark performance unverified.`
+- **About description:** `NSL-KDD intrusion-detection capstone: TensorFlow DNN, Flower federated training, and GAN augmentation experiments. Leakage-audited benchmark with reproducible evidence and documented limits.`
 - **Topics:** `federated-learning`, `intrusion-detection`, `network-security`, `nsl-kdd`, `flower`, `tensorflow`, `deep-learning`, `gan`, `python`, `capstone-project`.
 - **Website:** leave empty until a working project page or demo exists; then link that exact page.
 - **Social preview:** add `docs/images/social-preview.png`, 1280 × 640, showing the project title, stack, and architecture. Label it “Research prototype”; omit performance numbers.

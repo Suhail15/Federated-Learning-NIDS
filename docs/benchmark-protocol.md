@@ -8,7 +8,7 @@ Does GAN augmentation improve five-class detection on untouched real NSL-KDD rec
 
 The minimum experiment is one frozen data split, two simulated clients, four configurations, and three paired training seeds: **12 DNN fits and nine independent class-GAN fits**. This evaluates a local research workflow on an older benchmark. It does not establish real-network effectiveness, privacy, or performance across organizationally heterogeneous clients.
 
-## Existing evidence versus work still required
+## Historical evidence and completed benchmark
 
 | Item | Current status | Permitted interpretation |
 | --- | --- | --- |
@@ -118,7 +118,7 @@ The current `.gitignore` excludes all CSVs, logs, NumPy archives, and model weig
 - The benchmark includes a held-out evaluator and artifact exports; current client/server metrics supply local accuracy, not this benchmark report. Select `--strategy fedavg` explicitly; the current default is capstone-momentum.
 - Tests, boundary audits and independent verification check fit provenance, immutable membership, duplicate groups, real-only evaluation, scaler reuse, augmentation lineage and aggregation/update budgets. The existing three tests remain useful but do not verify these boundaries.
 
-A valid future conclusion may describe measured performance on this untouched NSL-KDD test set under this exact protocol. GAN benefit requires reporting the paired comparisons, including the oversampling control and rare-class support. Real deployment, privacy, robustness to non-IID clients, and capstone-momentum improvement remain separate, untested claims.
+The completed report describes measured performance on this untouched NSL-KDD test set under this exact protocol. GAN benefit requires reporting the paired comparisons, including the oversampling control and rare-class support. Real deployment, privacy, robustness to non-IID clients, and capstone-momentum improvement remain separate, untested claims.
 
 ## Sources inspected
 

@@ -29,3 +29,11 @@ results/benchmark/**/predictions.csv
 results/benchmark/**/fit-ids.csv
 results/benchmark/**/ros-lineage.csv
 results/benchmark/**/preprocessing.json
+
+# Publish the bounded GAN pilot using the same evidence-only policy.
+!results/gan-research/**/*.csv
+results/gan-research/**/splits.csv
+results/gan-research/**/predictions.csv
+results/gan-research/**/fit-ids.csv
+results/gan-research/**/ros-lineage.csv
+results/gan-research/**/preprocessing.json

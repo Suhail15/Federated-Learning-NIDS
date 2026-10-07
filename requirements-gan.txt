@@ -1,0 +1,5 @@
+-r requirements-benchmark.txt
+# Optional, bounded validation research; does not change the v1 benchmark.
+ctgan==0.11.0
+torch==2.8.0
+rdt==1.14.0

@@ -18,3 +18,8 @@ numerical_data/
 round_weights/
 *.log
 .pytest_cache/
+
+# Retain private benchmark datasets and checkpoints locally.
+.benchmark-local/
+# Publish only inspectable benchmark tables; other CSVs remain ignored.
+!results/benchmark/**/*.csv

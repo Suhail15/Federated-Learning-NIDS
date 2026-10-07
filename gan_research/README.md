@@ -47,4 +47,10 @@ The prior local development arrays are produced by [v1 raw preparation](../bench
 
 Published evidence includes a locked plan, split/fit IDs, ROS lineage, CTGAN losses, conditional-sampling and projection audits, training-only distribution diagnostics, model/input/code hashes, client losses and label schedules, all family metrics, per-record probabilities, paired comparisons, an independent verification and a chart. Large ID/prediction tables are compressed; raw feature records, model weights, generated arrays and pickled CTGAN objects remain outside Git.
 
+## One targeted follow-up
+
+The first pilot did not improve the matched controls. Its training-only audits showed that Probe dominated the shared fit and rare-family conditional outputs poorly matched real rare-family features. The follow-up enables `prepare --balance-gan-fit` and uses experiment/output directories `conditional-balanced-v1`. Every unique core minority record is retained, then additional real copies are bootstrapped to equal family counts **inside GAN fitting only**. Exact source-row lineage is retained. This reweights existing evidence; it does not create more real observations.
+
+The same 7,025 unique real records give 20,730 GAN fit rows. Epochs are mechanically reduced from 100 to 34: 1,394 adversarial updates versus the first pilot's 1,400. DNN controls, split boundaries, output doses, final-checkpoint rule and decision thresholds stay the same. All three seeds and both doses are retained. The design follows the first pilot's results and diagnostics, so its findings remain exploratory. No further tuning is hidden.
+
 The modeling rationale comes from the [CTGAN paper, NeurIPS 2019](https://papers.neurips.cc/paper/8953-modeling-tabular-data-using-conditional-gan.pdf): mixed data types, multimodal continuous columns and discrete imbalance motivate conditional tabular generation. That rationale does not establish an advantage on this intrusion task.

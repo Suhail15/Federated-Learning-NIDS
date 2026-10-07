@@ -54,6 +54,18 @@ def quotas(y, clients, dose):
              if label in (2, 3, 4) else 0 for label in range(5)] for c in range(2)]
 
 
+def balanced_fit_indices(labels, seed):
+    """Preserve every unique fit row, then bootstrap to equal family counts."""
+    rng = np.random.default_rng(seed)
+    classes = sorted(set(labels)); target = max(int(np.sum(labels == k)) for k in classes)
+    selected = []
+    for label in classes:
+        members = np.flatnonzero(labels == label)
+        selected.extend(members)
+        selected.extend(rng.choice(members, target-len(members), replace=True))
+    return np.asarray(selected, dtype=np.int64)
+
+
 def project(raw, real_class):
     """Apply training-derived constants and the original feature domains."""
     out = np.asarray(raw, dtype=np.float64).copy()
@@ -86,7 +98,7 @@ def batch_plan(x, y, seed, steps, batch=128):
     return x[index], labels
 
 
-def prepare(raw_path, previous, prior_local, evidence, local):
+def prepare(raw_path, previous, prior_local, evidence, local, balance_fit=False):
     if (evidence / 'plan.json').exists() or (local / 'development.npz').exists():
         raise ValueError('An existing experiment cannot be overwritten')
     old = load(previous / 'protocol.yaml')
@@ -142,6 +154,12 @@ def prepare(raw_path, previous, prior_local, evidence, local):
     steps = [math.ceil((int(np.sum(cc == c)) + sum(maxq[c])) / 128) for c in range(2)]
     reduced_keys = lambda a: {tuple(row) for row in a}
     train_patterns = reduced_keys(raw['x'][core])
+    minority_counts = np.bincount(raw['y'][core], minlength=5)[2:]
+    natural_steps = max(1, int(minority_counts.sum())//500)
+    fit_rows = int(3*minority_counts.max()) if balance_fit else int(minority_counts.sum())
+    fit_steps = max(1, fit_rows//500)
+    # Match the first pilot's adversarial updates approximately; no epoch tuning.
+    gan_epochs = max(1, 100*natural_steps//fit_steps) if balance_fit else 100
     plan = dict(version=1, experiment='conditional-gan-validation-v1', created_utc=utc(),
          status='locked-before-new-training', source_file=raw_path.name, source_sha256=raw['sha'],
          prior_development_sha256=old['development_sha256'], prior_evidence='nsl-kdd-v1',
@@ -160,7 +178,10 @@ def prepare(raw_path, previous, prior_local, evidence, local):
          primary='subtype-challenge macro F1; deliberately altered class mixture', secondary='mixed-validation macro F1',
          exposure='class-balanced batches, same label schedules and optimizer-update budgets across arms',
          checkpoint_selection='final round, no checkpoint or epoch selection from evaluation',
-         gan=dict(library='ctgan==0.11.0', torch='2.8.0', rdt='1.14.0', epochs=100,
+         gan=dict(library='ctgan==0.11.0', torch='2.8.0', rdt='1.14.0', epochs=gan_epochs,
+                  family_balanced_fit=balance_fit, unique_real_fit_rows=int(minority_counts.sum()),
+                  fit_rows_including_bootstrap=fit_rows, adversarial_updates=gan_epochs*fit_steps,
+                  first_pilot_adversarial_updates=100*natural_steps,
                   embedding_dim=32, generator_dim=[128,128], discriminator_dim=[128,128], batch_size=500,
                   pac=10, log_frequency=True, cuda=False, generator_lr=.0002, discriminator_lr=.0002,
                   generator_decay=.000001, discriminator_decay=.000001, discriminator_steps=1,
@@ -214,7 +235,10 @@ def augment(evidence, local, seed):
         pac=cfg['pac'], log_frequency=cfg['log_frequency'], cuda=False, verbose=False)
     model.set_random_state(seed)
     print(f'CTGAN seed={seed} fit={len(frame)} real minority rows; epochs={cfg["epochs"]}', flush=True)
-    started = time.monotonic(); model.fit(frame, discrete_columns=cfg['discrete_columns'])
+    fit_indices = (balanced_fit_indices(y[minority],seed)
+                   if cfg.get('family_balanced_fit',False) else np.arange(len(frame)))
+    started = time.monotonic()
+    model.fit(frame.iloc[fit_indices].reset_index(drop=True), discrete_columns=cfg['discrete_columns'])
     out.mkdir(parents=True, exist_ok=True)
     model.loss_values.to_csv(out/'losses.csv', index=False)
     model_path = local/f'ctgan-{seed}.pkl'; model.save(str(model_path))
@@ -264,6 +288,10 @@ def augment(evidence, local, seed):
     csv_write(out/'diagnostics.csv', list(diagnostics[0]), diagnostics)
     fit_rows = [dict(record_id=rid,family=int(label)) for rid,label in zip(d['core_ids'][minority],y[minority])]
     csv_write(out/'fit-ids.csv',list(fit_rows[0]),fit_rows)
+    if cfg.get('family_balanced_fit',False):
+        bootstrap = [dict(index=j,source_record_id=d['core_ids'][minority][i],family=int(y[minority][i]))
+                     for j,i in enumerate(fit_indices)]
+        csv_write(out/'gan-fit-lineage.csv',list(bootstrap[0]),bootstrap)
     lineage = []
     for c in range(2):
         for label in [2,3,4]:
@@ -276,6 +304,10 @@ def augment(evidence, local, seed):
     dump(out/'manifest.json',dict(seed=seed,status='completed',code_sha256=source_hash(),
          plan_sha256=sha(evidence/'plan.json'),pool_sha256=sha(pool_path),model_sha256=sha(model_path),
          fit_ids_sha256=sha(out/'fit-ids.csv'),fit_count=int(minority.sum()),
+         family_balanced_fit=cfg.get('family_balanced_fit',False),
+         fit_rows_including_bootstrap=len(fit_indices),
+         fit_class_counts={str(k):int(np.sum(y[minority][fit_indices] == k)) for k in [2,3,4]},
+         fit_lineage_sha256=sha(out/'gan-fit-lineage.csv') if cfg.get('family_balanced_fit',False) else None,
          sampling_audit=audits,seconds=time.monotonic()-started,torch=torch.__version__,
          exact_core_synthetic_pattern_overlap=0,validation_used_to_fit_or_filter=False,
          pooled_training_only=True))
@@ -510,6 +542,19 @@ def report(evidence):
         '- If no candidate improves the controls, retain real-only/oversampling as the supported choices and investigate more real rare-attack '
         'coverage or richer features. GAN samples cannot restore attack patterns absent from the underlying observations.','']
     (evidence/'report.md').write_text('\n'.join(lines))
+    if p['gan'].get('family_balanced_fit',False):
+        path = evidence/'report.md'; text = path.read_text()
+        detail = ('## Targeted follow-up: balance the GAN fit pool\n\n'
+            'The first conditional pilot failed and its training-only diagnostics showed poor rare-family conditioning. '
+            'This follow-up keeps the same core records, held-out subtypes, doses, classifier controls and decision rule. '
+            'Within GAN fitting only, every unique minority record is retained and client-pooled real copies are bootstrapped '
+            'to equal family counts. The exact source-row lineage is recorded; these copies add no new real information. '
+            f'The fit pool has {p["gan"]["fit_rows_including_bootstrap"]:,} rows from {p["gan"]["unique_real_fit_rows"]:,} unique real records. '
+            f'Epochs are mechanically reduced to {p["gan"]["epochs"]} to use {p["gan"]["adversarial_updates"]:,} adversarial updates, '
+            f'compared with {p["gan"]["first_pilot_adversarial_updates"]:,} in the first pilot; no epoch sweep. '
+            'This additional attempt follows inspection of the first pilot. Both attempts are reported; any improvement '
+            'remains exploratory and requires independent confirmation.\n\n')
+        path.write_text(text.replace('## Protocol and boundaries\n\n',detail+'## Protocol and boundaries\n\n'))
     print(json.dumps(dict(meets_pilot_rule=decision,summary=table),indent=2),flush=True)
 
 
@@ -533,6 +578,7 @@ def main():
     ap.add_argument('--raw-development',type=Path)
     ap.add_argument('--prior-evidence',type=Path,default=Path('results/benchmark/nsl-kdd-v1'))
     ap.add_argument('--prior-local',type=Path,default=Path('.benchmark-local/nsl-kdd-v1'))
+    ap.add_argument('--balance-gan-fit',action='store_true',help='Targeted follow-up: bootstrap equal family counts inside GAN fitting')
     a = ap.parse_args()
     if a.action == 'report':
         report(a.evidence)
@@ -540,7 +586,7 @@ def main():
         ap.error('--local is required for prepare/run')
     elif a.action == 'prepare':
         if a.raw_development is None: ap.error('--raw-development is required for prepare')
-        prepare(a.raw_development,a.prior_evidence,a.prior_local,a.evidence,a.local)
+        prepare(a.raw_development,a.prior_evidence,a.prior_local,a.evidence,a.local,a.balance_gan_fit)
     else:
         run(a.evidence,a.local)
 

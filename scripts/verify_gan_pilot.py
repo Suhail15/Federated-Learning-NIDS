@@ -36,6 +36,14 @@ def verify(root):
         assert digest(out/'fit-ids.csv') == m['fit_ids_sha256']
         assert {r['record_id'] for r in fit} == {k for k,r in train.items() if int(r['family']) in (2,3,4)}
         assert not m['validation_used_to_fit_or_filter'] and m['exact_core_synthetic_pattern_overlap'] == 0
+        if p['gan'].get('family_balanced_fit',False):
+            lineage = table(out/'gan-fit-lineage.csv')
+            assert digest(out/'gan-fit-lineage.csv') == m['fit_lineage_sha256']
+            assert {r['source_record_id'] for r in lineage} == {r['record_id'] for r in fit}
+            assert len(lineage) == p['gan']['fit_rows_including_bootstrap'] == m['fit_rows_including_bootstrap']
+            counts = [sum(int(r['family']) == k for r in lineage) for k in (2,3,4)]
+            assert len(set(counts)) == 1
+            assert all(r['family'] == train[r['source_record_id']]['family'] for r in lineage)
         sources = table(out/'ros-lineage.csv'); counts = [[0]*5 for _ in range(2)]; low = [[0]*5 for _ in range(2)]
         for r in sources:
             source = train[r['source_record_id']]
@@ -60,6 +68,8 @@ def verify(root):
             key = (seed,r['round'],r['client_id'])
             schedules.setdefault(key,r['label_schedule_sha256']); assert schedules[key] == r['label_schedule_sha256']
         predictions = table(out/'predictions.csv')
+        assert len(predictions) == len(hard)+len(mixed)
+        assert {r['split'] for r in predictions} == {'subtype-challenge','mixed-validation'}
         for name,expected in [('subtype-challenge',hard),('mixed-validation',mixed)]:
             matrix = [[0]*5 for _ in range(5)]; seen = set(); log_loss = 0
             for r in predictions:
@@ -110,6 +120,7 @@ def verify(root):
         fit_boundaries='passed',withheld_subtypes_excluded_from_fits=True,client_only_ros_lineage='passed',
         paired_initial_weights=True,paired_balanced_family_schedules=True,matched_update_budgets=True,
         pilot_decision_recomputed=True,test_re_evaluated=False,scope='exploratory validation only')
+    result['GAN_fit_bootstrap_lineage_verified'] = bool(p['gan'].get('family_balanced_fit',False))
     (root/'verification.json').write_text(json.dumps(result,indent=2)+'\n')
     return result
 

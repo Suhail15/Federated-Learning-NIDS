@@ -35,5 +35,6 @@ results/benchmark/**/preprocessing.json
 results/gan-research/**/splits.csv
 results/gan-research/**/predictions.csv
 results/gan-research/**/fit-ids.csv
+results/gan-research/**/gan-fit-lineage.csv
 results/gan-research/**/ros-lineage.csv
 results/gan-research/**/preprocessing.json

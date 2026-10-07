@@ -10,10 +10,12 @@ def digest(data): return hashlib.sha256(data).hexdigest()
 
 
 def package(root):
-    large_names = {'splits.csv','preprocessing.json','fit-ids.csv','ros-lineage.csv','predictions.csv'}
+    large_names = {'splits.csv','preprocessing.json','fit-ids.csv','gan-fit-lineage.csv','ros-lineage.csv','predictions.csv'}
     paths = sorted(p for p in root.rglob('*') if p.is_file() and p.name in large_names)
-    if len(paths) != 23:
-        raise ValueError('Expected splits, scaler, 6 augmentation tables and 15 prediction files')
+    plan = json.loads((root/'plan.json').read_text())
+    expected = 26 if plan['gan'].get('family_balanced_fit',False) else 23
+    if len(paths) != expected:
+        raise ValueError(f'Expected {expected} exact evidence tables')
     archive = root/'evidence-tables.tar.gz'
     with tarfile.open(archive,'w:gz',compresslevel=9) as tar:
         for path in paths:
@@ -35,7 +37,7 @@ def package(root):
     report = root/'report.md'; text = report.read_text()
     text = text.split('\n## Download exact evidence tables')[0]
     text += ('\n## Download exact evidence tables\n\n'
-             '[Evidence archive](evidence-tables.tar.gz) contains all 23 exact split, fit, lineage and prediction tables. '
+             f'[Evidence archive](evidence-tables.tar.gz) contains all {expected} exact split, fit, lineage and prediction tables. '
              '[Artifact index](artifacts.json) records each member\'s hash and the archive hash. '
              'Extract into this directory before rerunning verification. No raw features, generated records or models are included.\n')
     report.write_text(text)

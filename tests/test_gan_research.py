@@ -5,11 +5,18 @@ import unittest
 from pathlib import Path
 import numpy as np
 from benchmark.common import dump, load, read_raw, sha
-from gan_research.pilot import (FEATURES, HELD_SUBTYPES, batch_plan, prepare,
+from gan_research.pilot import (FEATURES, HELD_SUBTYPES, balanced_fit_indices, batch_plan, prepare,
                                 project, quotas, subtype_mask)
 
 
 class ConditionalPilotTests(unittest.TestCase):
+    def test_balanced_gan_fit_preserves_every_unique_real_source(self):
+        labels = np.repeat([2,3,4],[12,3,1])
+        selected = balanced_fit_indices(labels,11)
+        self.assertEqual(set(selected),set(range(len(labels))))
+        self.assertEqual(np.bincount(labels[selected],minlength=5).tolist(),[0,0,12,12,12])
+        np.testing.assert_array_equal(selected,balanced_fit_indices(labels,11))
+
     def test_subtype_holdout_moves_entire_full_feature_group(self):
         subtypes = np.array(['back','neptune','ipsweep','normal'])
         fp = np.array(['shared','shared','probe','normal'])

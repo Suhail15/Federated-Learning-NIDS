@@ -1,0 +1,114 @@
+{
+  "arms": {
+    "centralized": {
+      "accuracy": {
+        "mean": 0.747249822569198,
+        "sample_sd": 0.009229493428868278
+      },
+      "balanced_accuracy": {
+        "mean": 0.4811605514486528,
+        "sample_sd": 0.010349628186047038
+      },
+      "binary_attack_recall": {
+        "mean": 0.6531598223330476,
+        "sample_sd": 0.03560210572699074
+      },
+      "macro_f1": {
+        "mean": 0.46578024334625673,
+        "sample_sd": 0.003770925223321419
+      },
+      "normal_false_positive_rate": {
+        "mean": 0.06573301754024645,
+        "sample_sd": 0.006950944010001868
+      }
+    },
+    "fedavg-gan": {
+      "accuracy": {
+        "mean": 0.7386887863733144,
+        "sample_sd": 0.004424444377363313
+      },
+      "balanced_accuracy": {
+        "mean": 0.4768444992217343,
+        "sample_sd": 0.008957979930059494
+      },
+      "binary_attack_recall": {
+        "mean": 0.6366139380243643,
+        "sample_sd": 0.0042917248868433655
+      },
+      "macro_f1": {
+        "mean": 0.46622950179672157,
+        "sample_sd": 0.009141700288938678
+      },
+      "normal_false_positive_rate": {
+        "mean": 0.06882229773796039,
+        "sample_sd": 0.002335384435955658
+      }
+    },
+    "fedavg-real": {
+      "accuracy": {
+        "mean": 0.7438490655311095,
+        "sample_sd": 0.0031190540107738866
+      },
+      "balanced_accuracy": {
+        "mean": 0.47881303673837733,
+        "sample_sd": 0.0017897684771710776
+      },
+      "binary_attack_recall": {
+        "mean": 0.6391854333878803,
+        "sample_sd": 0.00831904418133913
+      },
+      "macro_f1": {
+        "mean": 0.46474615958618193,
+        "sample_sd": 0.0038637729867192793
+      },
+      "normal_false_positive_rate": {
+        "mean": 0.05821576905914255,
+        "sample_sd": 0.011192849284709094
+      }
+    },
+    "fedavg-ros": {
+      "accuracy": {
+        "mean": 0.7426514076176959,
+        "sample_sd": 0.0008930487858138853
+      },
+      "balanced_accuracy": {
+        "mean": 0.5097326084984176,
+        "sample_sd": 0.0022677333507859928
+      },
+      "binary_attack_recall": {
+        "mean": 0.6789527000701318,
+        "sample_sd": 0.011665995412091925
+      },
+      "macro_f1": {
+        "mean": 0.4978355533087864,
+        "sample_sd": 0.009357014246650554
+      },
+      "normal_false_positive_rate": {
+        "mean": 0.08227782926578107,
+        "sample_sd": 0.003751211121426625
+      }
+    }
+  },
+  "gan_minus_control": {
+    "fedavg-real": {
+      "mean": 0.0014833422105396583,
+      "paired_deltas": [
+        -0.007613977036649622,
+        -0.003619393985021202,
+        0.0156833976532898
+      ],
+      "sample_sd": 0.01245874609950667
+    },
+    "fedavg-ros": {
+      "mean": -0.03160605151206478,
+      "paired_deltas": [
+        -0.031511708799159044,
+        -0.03141740279895855,
+        -0.03188904293807676
+      ],
+      "sample_sd": 0.00024957266640334027
+    }
+  },
+  "interpretation": "descriptive paired variability; no significance claim",
+  "seed_count": 3
+}

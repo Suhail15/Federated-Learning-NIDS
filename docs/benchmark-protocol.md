@@ -1,6 +1,6 @@
 # Minimal leakage-safe benchmark protocol
 
-Status: execution protocol. Implementation and measured results are documented in `../results/benchmark/nsl-kdd-v1/report.md` once the fixed run completes. Prepared 7 October 2026 against public commit `d6705a356415b90b84cffd87c195e528674012cf`. The separate `benchmark` modules implement this protocol; historical demo entry points remain available.
+Status: execution protocol. All four configurations and three paired seeds have completed. [Measured results and evidence](../results/benchmark/nsl-kdd-v1/report.md) document the execution. Prepared 7 October 2026 against public commit `d6705a356415b90b84cffd87c195e528674012cf`. The separate `benchmark` modules implement this protocol; historical demo entry points remain available.
 
 ## Question and scope
 
@@ -16,8 +16,8 @@ The minimum experiment is one frozen data split, two simulated clients, four con
 | Python compilation | README records success | Syntax validation only |
 | Federated smoke test | Previously recorded: two clients, one round, 1,000 sampled augmented rows, zero client failures | Workflow completion only; augmented-before-split data prevents a generalization or GAN-benefit conclusion |
 | Current code inspection | `data.py`, `client.py`, `server.py`, `model.py`, and augmentation notebook inspected for this protocol | Current loader splits its input CSV; clients report local accuracy; server provides FedAvg and the nonstandard capstone-momentum rule |
-| Leakage-safe preprocessing, GAN training, and test evaluation | Not implemented/verified as one reproducible pipeline | Must be built, audited, and run |
-| Benchmark scores and comparisons | Not measured | Leave empty or mark not measured; never reuse smoke accuracy |
+| Leakage-safe preprocessing, GAN training, and test evaluation | Implemented and run in the separate benchmark pipeline | Boundary audits and independent prediction verification passed |
+| Benchmark scores and comparisons | All 12 final models evaluated on the sealed real test file | Report measured scope and mixed/negative GAN comparisons; historical smoke accuracy remains separate |
 
 The historical network smoke test was not rerun; current test and compilation evidence is saved with the benchmark. Saved historical execution logs and benchmark artifacts are absent from the repository.
 
@@ -111,12 +111,12 @@ The current `.gitignore` excludes all CSVs, logs, NumPy archives, and model weig
 
 ## 7. Implementation boundaries
 
-- Build a raw-record parser and deterministic training-only preparation pipeline; the notebooks are not an end-to-end verified recipe.
-- Introduce explicit split/client manifests and separate training/real-validation inputs. `load_partition()` currently performs a non-stratified 20% split after reading the CSV, so `--data` pointing at another CSV does not implement this protocol.
-- Extract the class GAN training into a reproducible runner with fresh models/optimizers per class and seed, frozen fit IDs, and matched oversampling.
-- Add common DNN update budgets, explicit initial parameters, fixed real-count aggregation weights, and final global checkpoint capture.
-- Add a held-out evaluator and artifact exports; current client/server metrics supply local accuracy, not this benchmark report. Select `--strategy fedavg` explicitly; the current default is capstone-momentum.
-- Add meaningful preflight checks for fit provenance, immutable split/client membership, duplicate groups, real-only validation/test data, scaler reuse, augmentation lineage, and aggregation/update budgets. The existing three tests remain useful but do not verify these boundaries.
+- `benchmark.prepare` provides a raw-record parser and deterministic training-only preparation pipeline; the notebooks are not an end-to-end verified recipe.
+- The benchmark uses explicit split/client manifests and separate training/real-validation inputs. `load_partition()` currently performs a non-stratified 20% split after reading the CSV, so `--data` pointing at another CSV does not implement this protocol.
+- `benchmark.run` trains fresh class models/optimizers per seed with frozen fit IDs and matched oversampling.
+- Common DNN update budgets, explicit initial parameters, real-count aggregation weights and final global checkpoint capture are implemented.
+- The benchmark includes a held-out evaluator and artifact exports; current client/server metrics supply local accuracy, not this benchmark report. Select `--strategy fedavg` explicitly; the current default is capstone-momentum.
+- Tests, boundary audits and independent verification check fit provenance, immutable membership, duplicate groups, real-only evaluation, scaler reuse, augmentation lineage and aggregation/update budgets. The existing three tests remain useful but do not verify these boundaries.
 
 A valid future conclusion may describe measured performance on this untouched NSL-KDD test set under this exact protocol. GAN benefit requires reporting the paired comparisons, including the oversampling control and rare-class support. Real deployment, privacy, robustness to non-IID clients, and capstone-momentum improvement remain separate, untested claims.
 
@@ -132,3 +132,7 @@ A valid future conclusion may describe measured performance on this untouched NS
 ## Execution clarifications fixed before training
 
 The benchmark uses serial clients in one process and calls Flower 1.8 FedAvg aggregation directly. It records this distinction from the earlier network smoke test. Original local-file acquisition is unrecorded, so the report qualifies provenance. The explicit label map assigns httptunnel to U2R and worm to DoS; it is frozen before training and test outcomes, and its exact supports are reported. Model/GAN weights and generated pools remain outside Git.
+
+## Completed execution
+
+The fixed run retained 100,247 real training and 25,062 real validation records, with all 22,544 local test records preserved. Development/test overlap excluded 658 records; seven conflicting groups contained 14 records, eight already in the overlap exclusion, for 664 unique exclusions. Nine tests and independent verification of all 12 runs passed. The full tables are packaged in `results/benchmark/nsl-kdd-v1/evidence-tables.tar.gz`; checkpoints, generated feature pools and prepared data remain in `.benchmark-local/nsl-kdd-v1/`. Source acquisition remains unverified. No additional configuration was selected after inspecting test results.

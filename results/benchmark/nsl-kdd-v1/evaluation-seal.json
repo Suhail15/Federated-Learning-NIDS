@@ -1,0 +1,81 @@
+{
+  "code_sha256": "000727f981f5905b3675f046dce801e6e0df9815aee5d6f1c6795e958502c7a4",
+  "frozen_utc": "2026-10-07T13:32:48.291680+00:00",
+  "protocol_sha256": "2f60b12b95000560fa00f23eddf3aaad6291555a1d69937eb0afc003a84bd611",
+  "runs": [
+    {
+      "arm": "centralized",
+      "checkpoint_sha256": "dde808f8817768674beb81e6b9a03b0d762fdf61a7e536c2f9d7081096382fcd",
+      "manifest_sha256": "fc1f9a0688eb8166600ef00d396c1492c0a30f90968fc55c4f4712e72abaa5f2",
+      "seed": 11
+    },
+    {
+      "arm": "centralized",
+      "checkpoint_sha256": "54d9bfb4b1924a9dc482334175ead78930f2f74d7411d90b3fe3e2cce48697f2",
+      "manifest_sha256": "ce38a18a540e17ad290d72a6b86c1ba20ee59d1ffaa42036c57718632413b921",
+      "seed": 22
+    },
+    {
+      "arm": "centralized",
+      "checkpoint_sha256": "67d5987562867268f7c5ef0197c606a78efce964fd4ee1176e72dfcc9b284ccc",
+      "manifest_sha256": "df93266cce31116095a40032a12578beb011949979412d204163e9eba38f5a51",
+      "seed": 33
+    },
+    {
+      "arm": "fedavg-real",
+      "checkpoint_sha256": "a8d55facffe0b61f47ff22aab2842c1b7f2c017a9f571871eee5ff705a4d0d03",
+      "manifest_sha256": "56ac3ed322c3a18f33abd07ed9f3d48944e293d4ad7661f1e2a91d1b322c0a6a",
+      "seed": 11
+    },
+    {
+      "arm": "fedavg-real",
+      "checkpoint_sha256": "f49d918ee15fdde01c523cdcbced29d5c1d4393c3b129a81423e8ed7919c424b",
+      "manifest_sha256": "0e75b4e8e0a9d08a1b10c80527748bbad7fa725768189d161cce9826f39c8136",
+      "seed": 22
+    },
+    {
+      "arm": "fedavg-real",
+      "checkpoint_sha256": "72bfa61195ebfabfbd6989eae967f3e41fb5e3c2f7af86ab9c83d86fa592dd52",
+      "manifest_sha256": "cfe94450d67c78b13c37e137c82502ba2017e0e0f1a174f83c8457048d13dc6f",
+      "seed": 33
+    },
+    {
+      "arm": "fedavg-ros",
+      "checkpoint_sha256": "0707b286e70bf0b27b676dcb367a48e8391ec9d5d64b425872ed9d683420517d",
+      "manifest_sha256": "7e2050dd393b6ea440e040239b1fbff44069c4c467534ee770e01faa314e5949",
+      "seed": 11
+    },
+    {
+      "arm": "fedavg-ros",
+      "checkpoint_sha256": "4b5716b32e630a6b64954c33361b64c23474d231c95a43f42a8e565422f6f0a7",
+      "manifest_sha256": "ecfb14d71334348b01c74990228b7c31426446ed9b06298d35d59f89ba7fe1e5",
+      "seed": 22
+    },
+    {
+      "arm": "fedavg-ros",
+      "checkpoint_sha256": "b29936bbceb07e4b4607b8daa34c5d30c7b9687f277e5f44dae1ac01b2b0002b",
+      "manifest_sha256": "43adce08139ed552741bc47ae2004043c2430445e4b2a5a3f8d026c70b1d03c5",
+      "seed": 33
+    },
+    {
+      "arm": "fedavg-gan",
+      "checkpoint_sha256": "f1510793f155f6e1973dc816e0b8c5f8814c424133196269e03adb57be14b215",
+      "manifest_sha256": "15217f90f4371e54e452c651fab6d05644ea9405d4d0591c64a911b8b05f682b",
+      "seed": 11
+    },
+    {
+      "arm": "fedavg-gan",
+      "checkpoint_sha256": "8e6328eebcac214caa1a613b886f5cca4870f029ff63fe4891cd34d0740b5cf0",
+      "manifest_sha256": "1fd920a378bf0f9612ce5044662b4508fddc492ed1c3e6e04b70a78b6af69ef9",
+      "seed": 22
+    },
+    {
+      "arm": "fedavg-gan",
+      "checkpoint_sha256": "f536c9c3d9fa3e80e018200c5064f74003de6c2fbf372d1e5c2505643dc0162b",
+      "manifest_sha256": "34e81b3a049b4905ecf03bd3d1c873cf8a221c0a6b2ae396669579a1ca51a949",
+      "seed": 33
+    }
+  ],
+  "selection": "all four arms and all three seeds; final checkpoints; no test-based selection",
+  "test_sha256": "a0bc00c88279deb795452d88171c4a3af5eaf9992b794d180a871f354fde54cf"
+}

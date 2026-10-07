@@ -1,0 +1,32 @@
+{
+  "conflicting_group_policy": "quarantine every development record in groups with conflicting family labels; never relabel",
+  "excluded_development_records": 664,
+  "independent_origin_verified": false,
+  "reference": "https://www.unb.ca/cic/datasets/nsl.html",
+  "source": "Existing local nsl-kdd files; original acquisition date/URL unrecorded",
+  "test": {
+    "class_counts": [
+      9711,
+      7460,
+      2421,
+      2752,
+      200
+    ],
+    "filename": "KDDTest+.txt",
+    "rows": 22544,
+    "sha256": "fa46b0935342616aa83b7c2578db355b6a7aaabbc492248172c7a1e8b7ab8f84"
+  },
+  "test_preserved_complete": true,
+  "train": {
+    "class_counts": [
+      67343,
+      45927,
+      11656,
+      995,
+      52
+    ],
+    "filename": "KDDTrain+.txt",
+    "rows": 125973,
+    "sha256": "1b86d2f957b33082081bba410fe129b475efebcc13c9014c3f447c8271aadf95"
+  }
+}

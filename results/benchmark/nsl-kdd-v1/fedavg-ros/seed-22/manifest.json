@@ -1,0 +1,41 @@
+{
+  "aggregation": "Flower FedAvg; real-count weights",
+  "arm": "fedavg-ros",
+  "checkpoint_relative": "fedavg-ros/seed-22/final.h5",
+  "checkpoint_selection": "final round",
+  "checkpoint_sha256": "4b5716b32e630a6b64954c33361b64c23474d231c95a43f42a8e565422f6f0a7",
+  "client_failures": 0,
+  "code_commit": "30f0cb9e1552ae1b617f3f757c33d541150ff01d",
+  "code_sha256": "000727f981f5905b3675f046dce801e6e0df9815aee5d6f1c6795e958502c7a4",
+  "command": "/Users/suhaill/Developement/Federated-Learning-NIDS/benchmark/run.py --evidence results/benchmark/nsl-kdd-v1 --local .benchmark-local/nsl-kdd-v1",
+  "completed_rounds": 5,
+  "determinism": true,
+  "dnn_seconds": 21.77553475000002,
+  "execution": "serial in-process clients; no network transport",
+  "exit_code": 0,
+  "flower": "1.8.0",
+  "initial_sha256": "7ef894e1eeb0272bd0a8d20cb6a524d1ad3e771e720550a0c8169ad7b8a72a7f",
+  "optimizer_state": "local Adam slots persist across rounds",
+  "optimizer_updates": 7790,
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "pool_counts": [
+    99704,
+    99704
+  ],
+  "presented_rows": 997120,
+  "protocol_sha256": "2f60b12b95000560fa00f23eddf3aaad6291555a1d69937eb0afc003a84bd611",
+  "python": "3.9.6",
+  "real_client_counts": [
+    50124,
+    50123
+  ],
+  "seed": 22,
+  "started_utc": "2026-10-07T13:30:05.093092+00:00",
+  "status": "completed",
+  "tensorflow": "2.15.1",
+  "test_used_in_training": false,
+  "threads": {
+    "inter": 2,
+    "intra": 4
+  }
+}

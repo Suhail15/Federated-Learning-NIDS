@@ -1,0 +1,19 @@
+test_conflicting_real_labels_are_rejected (test_benchmark.BenchmarkBoundaryTests) ... ok
+test_duplicate_groups_stay_together_and_cover_clients (test_benchmark.BenchmarkBoundaryTests) ... ok
+test_holdout_cannot_enter_scaler_fit (test_benchmark.BenchmarkBoundaryTests) ... ok
+test_macro_scores_include_never_predicted_classes (test_benchmark.BenchmarkBoundaryTests) ... ok
+test_parser_rejects_unknown_attack_and_nonfinite_features (test_benchmark.BenchmarkBoundaryTests) ... ok
+test_raw_preparation_freezes_real_splits_and_training_scale (test_benchmark.BenchmarkBoundaryTests) ... Prepared real train=40, validation=10, test=5; excluded=0; client steps=[1, 1]
+ok
+test_partitions_are_disjoint_complete_and_repeatable (test_data.PartitionTests) ... ok
+test_rejects_invalid_client (test_data.PartitionTests) ... ok
+test_rejects_invalid_labels (test_data.PartitionTests) ... <repository>/tests/test_data.py:37: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.5' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self.frame.loc[0, "class"] = 0.5
+ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.042s
+
+OK
+
+Compilation: benchmark and all existing entry points/experiments passed.

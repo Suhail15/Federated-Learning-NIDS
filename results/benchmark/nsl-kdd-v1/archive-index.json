@@ -1,0 +1,109 @@
+{
+  "archive": "evidence-tables.tar.gz",
+  "sha256": "bc1c45a5f64a41b8f555f81b57a2d7eaa70b8e61af836ac89b8f9ede8bd7ef0f",
+  "bytes": 38461900,
+  "entries": [
+    {
+      "path": "augmentation/seed-11/fit-ids.csv",
+      "sha256": "ac10e2e5bf9fa00adbf806a526a3416df7f3a0408df316e5cec657694027c8d2",
+      "bytes": 795746
+    },
+    {
+      "path": "augmentation/seed-11/ros-lineage.csv",
+      "sha256": "1909be3e6b462e9650f814edd9c44a717c30fd8797eb4486857299a7cf8090a5",
+      "bytes": 9166261
+    },
+    {
+      "path": "augmentation/seed-22/fit-ids.csv",
+      "sha256": "5e18cf89d537e27f14a7b938be955af65ab17fdb43d9000ced83c711a0dc9228",
+      "bytes": 795746
+    },
+    {
+      "path": "augmentation/seed-22/ros-lineage.csv",
+      "sha256": "73968c4631b4fb8848e3ae7d32656158edc91ed2447ac34c9f1eb0e5efcd346d",
+      "bytes": 9166130
+    },
+    {
+      "path": "augmentation/seed-33/fit-ids.csv",
+      "sha256": "24829d83f1da42f8fccab648bed1e0efc8339ce298711a61fd695eacb34ef360",
+      "bytes": 795746
+    },
+    {
+      "path": "augmentation/seed-33/ros-lineage.csv",
+      "sha256": "02812288b37aa66777f7f5fc6dbc4b92571add45fdc58e67484fe10cf52960a6",
+      "bytes": 9166155
+    },
+    {
+      "path": "centralized/seed-11/predictions.csv",
+      "sha256": "75dfcd502f51c41dc486b61b1d504c4730f840c0fff0d11fb6334f4f71c68c97",
+      "bytes": 9350911
+    },
+    {
+      "path": "centralized/seed-22/predictions.csv",
+      "sha256": "a5c44826fcf4c0a08c32e827f86d3448bf6d14e92c49d38e696d2e089af56b85",
+      "bytes": 9288637
+    },
+    {
+      "path": "centralized/seed-33/predictions.csv",
+      "sha256": "6a9a9a31ec13cc97378010ded7ab7f4165a49751ffdf9d0995b2d37c521160be",
+      "bytes": 9299128
+    },
+    {
+      "path": "fedavg-gan/seed-11/predictions.csv",
+      "sha256": "adf214ef5fcb538784fdd922e606b56e3f19ef450c50269c0e3b67e8450a7637",
+      "bytes": 9341779
+    },
+    {
+      "path": "fedavg-gan/seed-22/predictions.csv",
+      "sha256": "839c997810dbf513afe19db4b6dd1a0c5862796aa5a0f34bfe89f23587e14e1d",
+      "bytes": 9346908
+    },
+    {
+      "path": "fedavg-gan/seed-33/predictions.csv",
+      "sha256": "dbb020d54139d69177ebf78d5e52a276ea8e5da06fc233b49946ffa42e540d0f",
+      "bytes": 9343694
+    },
+    {
+      "path": "fedavg-real/seed-11/predictions.csv",
+      "sha256": "8d20b390c9ce5edb511d6ed86678e4a3e9c8dd06625259b7b75d0d8935cb9cf3",
+      "bytes": 9349316
+    },
+    {
+      "path": "fedavg-real/seed-22/predictions.csv",
+      "sha256": "b60f7c94a8e1918043e8fd498dd0af7817c2c1fcd3d3229e5b7ca01c5bddc860",
+      "bytes": 9344398
+    },
+    {
+      "path": "fedavg-real/seed-33/predictions.csv",
+      "sha256": "5fa5b2ae5616379392cd657226dc313bee56b6e9ac91fcdbd006bef8f3367b1c",
+      "bytes": 9344610
+    },
+    {
+      "path": "fedavg-ros/seed-11/predictions.csv",
+      "sha256": "79a31bec2d36ccb7b52f91db8d8ab68052a05f23cc36722cbe3f24e417910bc2",
+      "bytes": 9329038
+    },
+    {
+      "path": "fedavg-ros/seed-22/predictions.csv",
+      "sha256": "07c54a59ecf775f6a528074d338129cda41502ecf68d491d6d287aef0ff29c6e",
+      "bytes": 9330690
+    },
+    {
+      "path": "fedavg-ros/seed-33/predictions.csv",
+      "sha256": "31c6407f2707d96c62dda58e912b0448100c68d10b8d18acf66e0b833e0ae574",
+      "bytes": 9325413
+    },
+    {
+      "path": "preprocessing.json",
+      "sha256": "2ec4fd8f95357e0f6182c7dc51c4465496ede3feac338cc2ab0ea0fe1c9553cf",
+      "bytes": 7832759
+    },
+    {
+      "path": "splits.csv",
+      "sha256": "20e8974a527c200436863533143cc1cb0685d6b64102b24b4e46b0e56cab3b5b",
+      "bytes": 32023930
+    }
+  ],
+  "contains_raw_features_or_checkpoints": false,
+  "restore": "Extract this archive into the experiment directory to restore the full tables; keep raw datasets and weights separately."
+}

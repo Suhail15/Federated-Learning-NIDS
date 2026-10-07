@@ -1,0 +1,37 @@
+{
+  "aggregation_weights": "original real training counts",
+  "arms": [
+    "centralized",
+    "fedavg-real",
+    "fedavg-ros",
+    "fedavg-gan"
+  ],
+  "batch_size": 128,
+  "checkpoint_selection": "final round; no validation/test selection",
+  "development_sha256": "33779b0dc3f462a71826fb20c1ed42d2765860b34a2ed5b6bfd001282ebcc6f6",
+  "execution": "serial in-process clients with Flower FedAvg.aggregate_fit; no network transport",
+  "gan_batches": {
+    "2": 512,
+    "3": 32,
+    "4": 2
+  },
+  "gan_epochs": 50,
+  "gan_scope": "pooled original training only; independent class generators",
+  "holdout": "all locally held KDDTest+ records; file origin unverified",
+  "learning_rate": 0.0001,
+  "partition_seed": 42,
+  "preprocessing_sha256": "2ec4fd8f95357e0f6182c7dc51c4465496ede3feac338cc2ab0ea0fe1c9553cf",
+  "rounds": 5,
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "split_seed": 42,
+  "steps_per_client_per_round": [
+    779,
+    779
+  ],
+  "test_sha256": "a0bc00c88279deb795452d88171c4a3af5eaf9992b794d180a871f354fde54cf",
+  "version": 1
+}

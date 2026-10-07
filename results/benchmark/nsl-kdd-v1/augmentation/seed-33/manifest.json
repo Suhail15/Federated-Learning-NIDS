@@ -1,0 +1,142 @@
+{
+  "classes": [
+    {
+      "discriminator_sha256": "ecfda78e6e1a5c7db4c55ffe870539a8801c4bfdc4bd02993ded76cba6ac9bec",
+      "generated_count": 27186,
+      "generator_sha256": "9b1261758599a55976527da29d67d2477def9331db4be0c5825c8e9cc7d5f6d9",
+      "independent_initialization": true,
+      "label": 2,
+      "projection": {
+        "features_projected": {
+          "count": 27178,
+          "diff_srv_rate": 0,
+          "dst_host_count": 27073,
+          "dst_host_diff_srv_rate": 0,
+          "dst_host_rerror_rate": 0,
+          "dst_host_same_src_port_rate": 0,
+          "dst_host_same_srv_rate": 0,
+          "dst_host_serror_rate": 0,
+          "dst_host_srv_count": 27186,
+          "dst_host_srv_diff_host_rate": 0,
+          "dst_host_srv_rerror_rate": 0,
+          "dst_host_srv_serror_rate": 0,
+          "duration": 27186,
+          "hot": 27186,
+          "land": 27186,
+          "logged_in": 27186,
+          "rerror_rate": 0,
+          "same_srv_rate": 0,
+          "serror_rate": 0,
+          "srv_count": 27186,
+          "srv_diff_host_rate": 0,
+          "srv_rerror_rate": 0,
+          "srv_serror_rate": 0
+        },
+        "rejected": 0,
+        "samples_projected": 27186
+      },
+      "real_fit_count": 9220,
+      "seed": 3302
+    },
+    {
+      "discriminator_sha256": "535c9c30aefb633b949eae7bf4e5a1d19ce434bca61bc095be8c69d35d736e5b",
+      "generated_count": 35610,
+      "generator_sha256": "a40eeb60c5f7d1b51c75214b7f04d06fe351b28ca2594f17c2e7d677ff1baad4",
+      "independent_initialization": true,
+      "label": 3,
+      "projection": {
+        "features_projected": {
+          "count": 35610,
+          "diff_srv_rate": 0,
+          "dst_host_count": 34196,
+          "dst_host_diff_srv_rate": 0,
+          "dst_host_rerror_rate": 0,
+          "dst_host_same_src_port_rate": 0,
+          "dst_host_same_srv_rate": 0,
+          "dst_host_serror_rate": 0,
+          "dst_host_srv_count": 35610,
+          "dst_host_srv_diff_host_rate": 0,
+          "dst_host_srv_rerror_rate": 0,
+          "dst_host_srv_serror_rate": 0,
+          "duration": 35610,
+          "hot": 35610,
+          "land": 35610,
+          "logged_in": 35610,
+          "rerror_rate": 0,
+          "same_srv_rate": 0,
+          "serror_rate": 0,
+          "srv_count": 35610,
+          "srv_diff_host_rate": 0,
+          "srv_rerror_rate": 0,
+          "srv_serror_rate": 0
+        },
+        "rejected": 0,
+        "samples_projected": 35610
+      },
+      "real_fit_count": 796,
+      "seed": 3303
+    },
+    {
+      "discriminator_sha256": "a9cd155973dd31c62ea79ae09cc364761e35fdb88430929fc5c8734e3eed0e9d",
+      "generated_count": 36365,
+      "generator_sha256": "7fee2be94e27dd8f3f02a492008d20a868bb5fc9a28493bcd1568d910b76d5a6",
+      "independent_initialization": true,
+      "label": 4,
+      "projection": {
+        "features_projected": {
+          "count": 36365,
+          "diff_srv_rate": 0,
+          "dst_host_count": 36365,
+          "dst_host_diff_srv_rate": 0,
+          "dst_host_rerror_rate": 0,
+          "dst_host_same_src_port_rate": 0,
+          "dst_host_same_srv_rate": 0,
+          "dst_host_serror_rate": 0,
+          "dst_host_srv_count": 36365,
+          "dst_host_srv_diff_host_rate": 0,
+          "dst_host_srv_rerror_rate": 0,
+          "dst_host_srv_serror_rate": 0,
+          "duration": 36365,
+          "hot": 36365,
+          "land": 36365,
+          "logged_in": 36365,
+          "rerror_rate": 0,
+          "same_srv_rate": 0,
+          "serror_rate": 0,
+          "srv_count": 36365,
+          "srv_diff_host_rate": 0,
+          "srv_rerror_rate": 0,
+          "srv_serror_rate": 0
+        },
+        "rejected": 0,
+        "samples_projected": 36365
+      },
+      "real_fit_count": 41,
+      "seed": 3304
+    }
+  ],
+  "code_sha256": "000727f981f5905b3675f046dce801e6e0df9815aee5d6f1c6795e958502c7a4",
+  "fit_ids_sha256": "24829d83f1da42f8fccab648bed1e0efc8339ce298711a61fd695eacb34ef360",
+  "gan_preparation": "pooled training only; no client privacy claim",
+  "gan_seconds": 28.742157874999975,
+  "pool_sha256": "d670b292640da4f5607390c486f0eb12ac462ea3774b046971cfe4314582e64f",
+  "protocol_sha256": "2f60b12b95000560fa00f23eddf3aaad6291555a1d69937eb0afc003a84bd611",
+  "quotas": [
+    [
+      0,
+      0,
+      13593,
+      17805,
+      18182
+    ],
+    [
+      0,
+      0,
+      13593,
+      17805,
+      18183
+    ]
+  ],
+  "seed": 33,
+  "status": "completed"
+}

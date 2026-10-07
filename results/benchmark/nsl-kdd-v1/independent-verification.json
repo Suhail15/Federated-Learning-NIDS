@@ -1,0 +1,12 @@
+{
+  "runs_verified": 12,
+  "test_records_per_run": 22544,
+  "training_records": 100247,
+  "validation_records": 25062,
+  "prediction_coverage": "complete and unique",
+  "independent_metric_recomputation": "passed",
+  "paired_initial_weights": "identical within each seed",
+  "matched_update_counts": "passed",
+  "GAN_fit_IDs_training_only": true,
+  "oversampling_lineage_training_and_client_only": true
+}

@@ -1,6 +1,6 @@
 # Portfolio evidence checklist
 
-These are proposed additions, not completed experiments or existing artifacts. Prioritise inspectable evidence over star/fork counts. Keep the README's evidence table and leakage caveat when adding visuals.
+The [controlled benchmark](../results/benchmark/nsl-kdd-v1/report.md) is now complete, with measured tables, figures, full prediction evidence and independent verification. The metadata and demo-screenshot items below remain proposed additions. Prioritise inspectable evidence over star/fork counts. Keep the README's evidence table and leakage caveat when adding visuals.
 
 ## 1. Repository metadata
 

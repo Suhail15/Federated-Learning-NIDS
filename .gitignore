@@ -23,3 +23,9 @@ round_weights/
 .benchmark-local/
 # Publish only inspectable benchmark tables; other CSVs remain ignored.
 !results/benchmark/**/*.csv
+# Large exact tables are published in a verified compressed evidence archive.
+results/benchmark/**/splits.csv
+results/benchmark/**/predictions.csv
+results/benchmark/**/fit-ids.csv
+results/benchmark/**/ros-lineage.csv
+results/benchmark/**/preprocessing.json

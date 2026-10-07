@@ -1,0 +1,208 @@
+<repository>/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+GAN seed=11 class=2 epoch=10/50 losses=[0.7236103384118331, 1.3165449719679982]
+GAN seed=11 class=2 epoch=20/50 losses=[0.8234792226239255, 1.1658667388715243]
+GAN seed=11 class=2 epoch=30/50 losses=[0.704925138699381, 1.3232121655815525]
+GAN seed=11 class=2 epoch=40/50 losses=[0.8260558624016611, 1.2452718113598071]
+GAN seed=11 class=2 epoch=50/50 losses=[0.8701662954531217, 1.204987739261828]
+GAN seed=11 class=3 epoch=10/50 losses=[0.7367945408821106, 1.2916583347320556]
+GAN seed=11 class=3 epoch=20/50 losses=[0.7727324366569519, 1.2899847269058227]
+GAN seed=11 class=3 epoch=30/50 losses=[0.778984682559967, 1.2690705966949463]
+GAN seed=11 class=3 epoch=40/50 losses=[0.7172620034217835, 1.4080855703353883]
+GAN seed=11 class=3 epoch=50/50 losses=[0.7336606407165527, 1.3519689846038818]
+GAN seed=11 class=4 epoch=10/50 losses=[0.7626253763834635, 1.277051880246117]
+GAN seed=11 class=4 epoch=20/50 losses=[0.6292961921010699, 1.4112763348079862]
+GAN seed=11 class=4 epoch=30/50 losses=[0.7299895371709552, 1.312975667771839]
+GAN seed=11 class=4 epoch=40/50 losses=[0.7437937373206729, 1.3773541223435175]
+GAN seed=11 class=4 epoch=50/50 losses=[0.7485489589827401, 1.3401311522438413]
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+centralized seed=11 round=1/5 val_macro_f1=0.7185 seconds=4.6
+centralized seed=11 round=2/5 val_macro_f1=0.7250 seconds=4.5
+centralized seed=11 round=3/5 val_macro_f1=0.7332 seconds=4.1
+centralized seed=11 round=4/5 val_macro_f1=0.7395 seconds=4.2
+centralized seed=11 round=5/5 val_macro_f1=0.7387 seconds=4.1
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-real seed=11 round=1/5 val_macro_f1=0.5784 seconds=4.8
+fedavg-real seed=11 round=2/5 val_macro_f1=0.7185 seconds=4.2
+fedavg-real seed=11 round=3/5 val_macro_f1=0.7189 seconds=4.1
+fedavg-real seed=11 round=4/5 val_macro_f1=0.7265 seconds=4.3
+fedavg-real seed=11 round=5/5 val_macro_f1=0.7290 seconds=4.1
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-ros seed=11 round=1/5 val_macro_f1=0.6591 seconds=5.0
+fedavg-ros seed=11 round=2/5 val_macro_f1=0.6759 seconds=4.2
+fedavg-ros seed=11 round=3/5 val_macro_f1=0.6925 seconds=4.2
+fedavg-ros seed=11 round=4/5 val_macro_f1=0.7045 seconds=4.2
+fedavg-ros seed=11 round=5/5 val_macro_f1=0.7133 seconds=4.3
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-gan seed=11 round=1/5 val_macro_f1=0.6986 seconds=4.9
+fedavg-gan seed=11 round=2/5 val_macro_f1=0.7229 seconds=4.2
+fedavg-gan seed=11 round=3/5 val_macro_f1=0.7393 seconds=4.7
+fedavg-gan seed=11 round=4/5 val_macro_f1=0.7463 seconds=4.2
+fedavg-gan seed=11 round=5/5 val_macro_f1=0.7520 seconds=4.2
+GAN seed=22 class=2 epoch=10/50 losses=[0.8223115268506502, 1.2205830059553449]
+GAN seed=22 class=2 epoch=20/50 losses=[0.9554724410960549, 1.1573835234892995]
+GAN seed=22 class=2 epoch=30/50 losses=[0.7394748016407615, 1.276932716369629]
+GAN seed=22 class=2 epoch=40/50 losses=[0.7919205082090277, 1.3313926834809153]
+GAN seed=22 class=2 epoch=50/50 losses=[0.833622860281091, 1.2179112936321057]
+GAN seed=22 class=3 epoch=10/50 losses=[0.8237817358970642, 1.3194178867340087]
+GAN seed=22 class=3 epoch=20/50 losses=[0.7174046468734742, 1.2915567827224732]
+GAN seed=22 class=3 epoch=30/50 losses=[0.8680898976325989, 1.1219548559188843]
+GAN seed=22 class=3 epoch=40/50 losses=[0.7746751499176026, 1.3154600524902345]
+GAN seed=22 class=3 epoch=50/50 losses=[0.7522933030128479, 1.3460021305084229]
+GAN seed=22 class=4 epoch=10/50 losses=[0.714653023651668, 1.347460428873698]
+GAN seed=22 class=4 epoch=20/50 losses=[0.6273212149029687, 1.4400380509240287]
+GAN seed=22 class=4 epoch=30/50 losses=[0.7001116701534816, 1.4202925591241746]
+GAN seed=22 class=4 epoch=40/50 losses=[0.7042443014326549, 1.4246782348269509]
+GAN seed=22 class=4 epoch=50/50 losses=[0.6662522696313404, 1.3921038877396357]
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+centralized seed=22 round=1/5 val_macro_f1=0.7149 seconds=4.5
+centralized seed=22 round=2/5 val_macro_f1=0.7263 seconds=4.2
+centralized seed=22 round=3/5 val_macro_f1=0.7341 seconds=4.2
+centralized seed=22 round=4/5 val_macro_f1=0.7413 seconds=4.1
+centralized seed=22 round=5/5 val_macro_f1=0.7517 seconds=4.2
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-real seed=22 round=1/5 val_macro_f1=0.5760 seconds=4.7
+fedavg-real seed=22 round=2/5 val_macro_f1=0.7208 seconds=4.2
+fedavg-real seed=22 round=3/5 val_macro_f1=0.7275 seconds=4.4
+fedavg-real seed=22 round=4/5 val_macro_f1=0.7219 seconds=4.1
+fedavg-real seed=22 round=5/5 val_macro_f1=0.7314 seconds=4.3
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-ros seed=22 round=1/5 val_macro_f1=0.6599 seconds=4.9
+fedavg-ros seed=22 round=2/5 val_macro_f1=0.6819 seconds=4.2
+fedavg-ros seed=22 round=3/5 val_macro_f1=0.6970 seconds=4.2
+fedavg-ros seed=22 round=4/5 val_macro_f1=0.7127 seconds=4.3
+fedavg-ros seed=22 round=5/5 val_macro_f1=0.7096 seconds=4.2
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-gan seed=22 round=1/5 val_macro_f1=0.7085 seconds=4.9
+fedavg-gan seed=22 round=2/5 val_macro_f1=0.7258 seconds=4.2
+fedavg-gan seed=22 round=3/5 val_macro_f1=0.7369 seconds=4.2
+fedavg-gan seed=22 round=4/5 val_macro_f1=0.7440 seconds=4.2
+fedavg-gan seed=22 round=5/5 val_macro_f1=0.7502 seconds=4.2
+GAN seed=33 class=2 epoch=10/50 losses=[0.7361913699852792, 1.2726083742944818]
+GAN seed=33 class=2 epoch=20/50 losses=[0.6612334690595928, 1.4966993018200523]
+GAN seed=33 class=2 epoch=30/50 losses=[0.7090652585029602, 1.3057083456139815]
+GAN seed=33 class=2 epoch=40/50 losses=[0.8297547729391801, 1.1916950752860622]
+GAN seed=33 class=2 epoch=50/50 losses=[0.8084530610787241, 1.2723177734174227]
+GAN seed=33 class=3 epoch=10/50 losses=[0.7807833290100098, 1.2627098083496093]
+GAN seed=33 class=3 epoch=20/50 losses=[0.6555997085571289, 1.3899358797073365]
+GAN seed=33 class=3 epoch=30/50 losses=[0.7580267882347107, 1.3396869325637817]
+GAN seed=33 class=3 epoch=40/50 losses=[0.9164055728912354, 1.2072278785705566]
+GAN seed=33 class=3 epoch=50/50 losses=[0.781341450214386, 1.2902499723434449]
+GAN seed=33 class=4 epoch=10/50 losses=[0.7300961925869897, 1.346785721324739]
+GAN seed=33 class=4 epoch=20/50 losses=[0.69397824435007, 1.4141946349825179]
+GAN seed=33 class=4 epoch=30/50 losses=[0.7139222763833546, 1.341135127203805]
+GAN seed=33 class=4 epoch=40/50 losses=[0.7114074769474211, 1.3701840866179693]
+GAN seed=33 class=4 epoch=50/50 losses=[0.7067079998198009, 1.3805232218333654]
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+centralized seed=33 round=1/5 val_macro_f1=0.6734 seconds=4.4
+centralized seed=33 round=2/5 val_macro_f1=0.7260 seconds=4.2
+centralized seed=33 round=3/5 val_macro_f1=0.7312 seconds=4.2
+centralized seed=33 round=4/5 val_macro_f1=0.7387 seconds=4.2
+centralized seed=33 round=5/5 val_macro_f1=0.7484 seconds=4.1
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-real seed=33 round=1/5 val_macro_f1=0.5781 seconds=4.9
+fedavg-real seed=33 round=2/5 val_macro_f1=0.7260 seconds=4.2
+fedavg-real seed=33 round=3/5 val_macro_f1=0.7226 seconds=4.2
+fedavg-real seed=33 round=4/5 val_macro_f1=0.7277 seconds=4.2
+fedavg-real seed=33 round=5/5 val_macro_f1=0.7330 seconds=4.1
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-ros seed=33 round=1/5 val_macro_f1=0.6499 seconds=5.1
+fedavg-ros seed=33 round=2/5 val_macro_f1=0.6877 seconds=4.3
+fedavg-ros seed=33 round=3/5 val_macro_f1=0.6936 seconds=5.0
+fedavg-ros seed=33 round=4/5 val_macro_f1=0.7093 seconds=4.3
+fedavg-ros seed=33 round=5/5 val_macro_f1=0.7052 seconds=4.4
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+WARNING:flwr:No fit_metrics_aggregation_fn provided
+fedavg-gan seed=33 round=1/5 val_macro_f1=0.6798 seconds=4.8
+fedavg-gan seed=33 round=2/5 val_macro_f1=0.7195 seconds=5.0
+fedavg-gan seed=33 round=3/5 val_macro_f1=0.7284 seconds=4.2
+fedavg-gan seed=33 round=4/5 val_macro_f1=0.7304 seconds=4.3
+fedavg-gan seed=33 round=5/5 val_macro_f1=0.7413 seconds=4.3
+TEST centralized seed=11 macro_f1=0.4635
+TEST centralized seed=22 macro_f1=0.4701
+TEST centralized seed=33 macro_f1=0.4637
+TEST fedavg-real seed=11 macro_f1=0.4658
+TEST fedavg-real seed=22 macro_f1=0.4680
+TEST fedavg-real seed=33 macro_f1=0.4605
+TEST fedavg-ros seed=11 macro_f1=0.4897
+TEST fedavg-ros seed=22 macro_f1=0.4958
+TEST fedavg-ros seed=33 macro_f1=0.5080
+TEST fedavg-gan seed=11 macro_f1=0.4582
+TEST fedavg-gan seed=22 macro_f1=0.4644
+TEST fedavg-gan seed=33 macro_f1=0.4762
+<repository>/.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+  prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+<repository>/.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  parse = parser.parseString(pattern)
+<repository>/.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  parser.resetCache()
+<repository>/.venv/lib/python3.9/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+  ParserElement.enablePackrat()
+WARNING:matplotlib.style.core:In <repository>/.venv/lib/python3.9/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
+WARNING:matplotlib.style.core:In <repository>/.venv/lib/python3.9/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
+{
+  "macro_f1": {
+    "centralized": {
+      "mean": 0.46578024334625673,
+      "sample_sd": 0.003770925223321419
+    },
+    "fedavg-real": {
+      "mean": 0.46474615958618193,
+      "sample_sd": 0.0038637729867192793
+    },
+    "fedavg-ros": {
+      "mean": 0.4978355533087864,
+      "sample_sd": 0.009357014246650554
+    },
+    "fedavg-gan": {
+      "mean": 0.46622950179672157,
+      "sample_sd": 0.009141700288938678
+    }
+  },
+  "gan_deltas": {
+    "fedavg-real": {
+      "paired_deltas": [
+        -0.007613977036649622,
+        -0.003619393985021202,
+        0.0156833976532898
+      ],
+      "mean": 0.0014833422105396583,
+      "sample_sd": 0.01245874609950667
+    },
+    "fedavg-ros": {
+      "paired_deltas": [
+        -0.031511708799159044,
+        -0.03141740279895855,
+        -0.03188904293807676
+      ],
+      "mean": -0.03160605151206478,
+      "sample_sd": 0.00024957266640334027
+    }
+  }
+}

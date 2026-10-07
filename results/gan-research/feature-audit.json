@@ -1,0 +1,379 @@
+{
+  "core_development_sha256": "77f7d58b651a1ff0967428091f7654309f85d28b7c1fb3497d6b1e00f57e85ce",
+  "fields_present_in_raw_but_absent_from_current_23_feature_model": {
+    "dst_bytes": {
+      "DoS": {
+        "max": 880.0,
+        "mean": 0.026239067055393587,
+        "positive_fraction": 8.409957389549227e-05,
+        "positive_rows": 3,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 5134218.0,
+        "mean": 4277.394169269672,
+        "positive_fraction": 0.8374609549308345,
+        "positive_rows": 45042,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 51633.0,
+        "mean": 12.542691751085384,
+        "positive_fraction": 0.02503617945007236,
+        "positive_rows": 173,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 5155468.0,
+        "mean": 926523.5308641975,
+        "positive_fraction": 0.9135802469135802,
+        "positive_rows": 74,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 70529.0,
+        "mean": 6478.264705882353,
+        "positive_fraction": 0.9705882352941176,
+        "positive_rows": 33,
+        "real_core_rows": 34
+      }
+    },
+    "num_access_files": {
+      "DoS": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 8.0,
+        "mean": 0.00762308493232188,
+        "positive_fraction": 0.005373345232782984,
+        "positive_rows": 289,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 2.0,
+        "mean": 0.09876543209876543,
+        "positive_fraction": 0.08641975308641975,
+        "positive_rows": 7,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 34
+      }
+    },
+    "num_compromised": {
+      "DoS": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 7479.0,
+        "mean": 0.565465565967574,
+        "positive_fraction": 0.005466309683177153,
+        "positive_rows": 294,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 4.0,
+        "mean": 0.0008683068017366136,
+        "positive_fraction": 0.0004341534008683068,
+        "positive_rows": 3,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 38.0,
+        "mean": 0.9506172839506173,
+        "positive_fraction": 0.04938271604938271,
+        "positive_rows": 4,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 6.0,
+        "mean": 1.4705882352941178,
+        "positive_fraction": 0.5,
+        "positive_rows": 17,
+        "real_core_rows": 34
+      }
+    },
+    "num_failed_logins": {
+      "DoS": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 4.0,
+        "mean": 0.0014688383162278745,
+        "positive_fraction": 0.001022608954335862,
+        "positive_rows": 55,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 4.0,
+        "mean": 0.0005788712011577424,
+        "positive_fraction": 0.0001447178002894356,
+        "positive_rows": 1,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 5.0,
+        "mean": 0.5432098765432098,
+        "positive_fraction": 0.49382716049382713,
+        "positive_rows": 40,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 34
+      }
+    },
+    "num_file_creations": {
+      "DoS": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 40.0,
+        "mean": 0.021047151569239923,
+        "positive_fraction": 0.0037557637959244384,
+        "positive_rows": 202,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 18.0,
+        "mean": 0.002894356005788712,
+        "positive_fraction": 0.0002894356005788712,
+        "positive_rows": 2,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 4.0,
+        "mean": 0.16049382716049382,
+        "positive_fraction": 0.08641975308641975,
+        "positive_rows": 7,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 4.0,
+        "mean": 0.6764705882352942,
+        "positive_fraction": 0.4411764705882353,
+        "positive_rows": 15,
+        "real_core_rows": 34
+      }
+    },
+    "num_root": {
+      "DoS": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 7468.0,
+        "mean": 0.6251487431206306,
+        "positive_fraction": 0.009575338390599434,
+        "positive_rows": 515,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 4.0,
+        "mean": 0.0008683068017366136,
+        "positive_fraction": 0.0004341534008683068,
+        "positive_rows": 3,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 54.0,
+        "mean": 1.3580246913580247,
+        "positive_fraction": 0.04938271604938271,
+        "positive_rows": 4,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 14.0,
+        "mean": 1.0588235294117647,
+        "positive_fraction": 0.23529411764705882,
+        "positive_rows": 8,
+        "real_core_rows": 34
+      }
+    },
+    "num_shells": {
+      "DoS": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 2.0,
+        "mean": 0.0006135653726015172,
+        "positive_fraction": 0.0005763795924438494,
+        "positive_rows": 31,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 2.0,
+        "mean": 0.04938271604938271,
+        "positive_fraction": 0.037037037037037035,
+        "positive_rows": 3,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 1.0,
+        "mean": 0.058823529411764705,
+        "positive_fraction": 0.058823529411764705,
+        "positive_rows": 2,
+        "real_core_rows": 34
+      }
+    },
+    "root_shell": {
+      "DoS": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 1.0,
+        "mean": 0.0021009965789082256,
+        "positive_fraction": 0.0021009965789082256,
+        "positive_rows": 113,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 1.0,
+        "mean": 0.06172839506172839,
+        "positive_fraction": 0.06172839506172839,
+        "positive_rows": 5,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 1.0,
+        "mean": 0.5,
+        "positive_fraction": 0.5,
+        "positive_rows": 17,
+        "real_core_rows": 34
+      }
+    },
+    "src_bytes": {
+      "DoS": {
+        "max": 10714.0,
+        "mean": 56.24147790984526,
+        "positive_fraction": 0.07894146669656874,
+        "positive_rows": 2816,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 21945520.0,
+        "mean": 11895.34668302841,
+        "positive_fraction": 0.9490554811839952,
+        "positive_rows": 51044,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 4113.0,
+        "mean": 12.31548480463097,
+        "positive_fraction": 0.6761215629522431,
+        "positive_rows": 4672,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 1492.0,
+        "mean": 171.91358024691357,
+        "positive_fraction": 0.7283950617283951,
+        "positive_rows": 59,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 6274.0,
+        "mean": 1104.3529411764705,
+        "positive_fraction": 0.7647058823529411,
+        "positive_rows": 26,
+        "real_core_rows": 34
+      }
+    },
+    "su_attempted": {
+      "DoS": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 35672
+      },
+      "Normal": {
+        "max": 2.0,
+        "mean": 0.002175368139223561,
+        "positive_fraction": 0.0012643165253607021,
+        "positive_rows": 68,
+        "real_core_rows": 53784
+      },
+      "Probe": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 6910
+      },
+      "R2L": {
+        "max": 1.0,
+        "mean": 0.012345679012345678,
+        "positive_fraction": 0.012345679012345678,
+        "positive_rows": 1,
+        "real_core_rows": 81
+      },
+      "U2R": {
+        "max": 0.0,
+        "mean": 0.0,
+        "positive_fraction": 0.0,
+        "positive_rows": 0,
+        "real_core_rows": 34
+      }
+    }
+  },
+  "hypothesis": "Globally sparse attack-specific features may contain information important to rare families. A generator operating on the reduced feature set cannot restore omitted information. Restore and validate these fields in a separate locked comparison; no performance claim is established by this descriptive audit.",
+  "scope": "descriptive real core training statistics only, not detection-performance evidence",
+  "selection_evidence": "notebooks/clientmk3i.ipynb drops these fields; benchmark/common.py preserves the 23-feature selection",
+  "source_sha256": "1b86d2f957b33082081bba410fe129b475efebcc13c9014c3f447c8271aadf95"
+}

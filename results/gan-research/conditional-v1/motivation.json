@@ -1,0 +1,146 @@
+{
+  "interpretation": "Ordinary validation gains did not transfer to v1 test; excessive rare-family doses and feature drift motivate bounded conditional generation. Causes are hypotheses, not proven.",
+  "prior_augmentation_seed_11_sha256": "d17274545d8a38afb6045dfd4beb410629bd9f4ede37f37b7774e585de2993f0",
+  "prior_development_sha256": "33779b0dc3f462a71826fb20c1ed42d2765860b34a2ed5b6bfd001282ebcc6f6",
+  "prior_final_mixed_validation": {
+    "fedavg-gan": {
+      "final_macro_f1_by_seed": [
+        0.7520270769727243,
+        0.7501641697012356,
+        0.7413116389882739
+      ],
+      "mean": 0.7478342952207445
+    },
+    "fedavg-real": {
+      "final_macro_f1_by_seed": [
+        0.7289521806822904,
+        0.7313747169058529,
+        0.732958151266514
+      ],
+      "mean": 0.7310950162848857
+    },
+    "fedavg-ros": {
+      "final_macro_f1_by_seed": [
+        0.7133243974666679,
+        0.7095681847614305,
+        0.7052358741414556
+      ],
+      "mean": 0.7093761521231846
+    }
+  },
+  "scope": "Prior v1 validation scores and training-only synthetic diagnostics; no new test evaluation",
+  "seed_11_prior_augmentation_diagnostics": [
+    {
+      "family": 2,
+      "largest_drift_features": [
+        {
+          "feature": "same_srv_rate",
+          "real_raw_mean": 0.6930368542671204,
+          "scaled_wasserstein": 0.1434540644641132,
+          "synthetic_raw_mean": 0.5496448278427124
+        },
+        {
+          "feature": "count",
+          "real_raw_mean": 77.49425506591797,
+          "scaled_wasserstein": 0.13262815924372087,
+          "synthetic_raw_mean": 9.919737815856934
+        },
+        {
+          "feature": "dst_host_srv_diff_host_rate",
+          "real_raw_mean": 0.18157266080379486,
+          "scaled_wasserstein": 0.13008077968705248,
+          "synthetic_raw_mean": 0.30935898423194885
+        },
+        {
+          "feature": "dst_host_same_src_port_rate",
+          "real_raw_mean": 0.6494337916374207,
+          "scaled_wasserstein": 0.1133969389354671,
+          "synthetic_raw_mean": 0.5421200394630432
+        }
+      ],
+      "real_fit_count": 9220,
+      "synthetic_count": 27186,
+      "synthetic_to_real_ratio": 2.948590021691974
+    },
+    {
+      "family": 3,
+      "largest_drift_features": [
+        {
+          "feature": "dst_host_serror_rate",
+          "real_raw_mean": 0.023040201514959335,
+          "scaled_wasserstein": 0.09734487019929425,
+          "synthetic_raw_mean": 0.12037920951843262
+        },
+        {
+          "feature": "dst_host_same_srv_rate",
+          "real_raw_mean": 0.7101130485534668,
+          "scaled_wasserstein": 0.07861896323469905,
+          "synthetic_raw_mean": 0.632577121257782
+        },
+        {
+          "feature": "dst_host_same_src_port_rate",
+          "real_raw_mean": 0.5785301923751831,
+          "scaled_wasserstein": 0.05245912136066087,
+          "synthetic_raw_mean": 0.6270153522491455
+        },
+        {
+          "feature": "logged_in",
+          "real_raw_mean": 0.9158291220664978,
+          "scaled_wasserstein": 0.04960191296273561,
+          "synthetic_raw_mean": 0.9654310345649719
+        }
+      ],
+      "real_fit_count": 796,
+      "synthetic_count": 35610,
+      "synthetic_to_real_ratio": 44.73618090452261
+    },
+    {
+      "family": 4,
+      "largest_drift_features": [
+        {
+          "feature": "dst_host_count",
+          "real_raw_mean": 35.24390411376953,
+          "scaled_wasserstein": 0.26891507596178826,
+          "synthetic_raw_mean": 102.58306121826172
+        },
+        {
+          "feature": "dst_host_same_srv_rate",
+          "real_raw_mean": 0.8199999928474426,
+          "scaled_wasserstein": 0.20007526261677405,
+          "synthetic_raw_mean": 0.6199247241020203
+        },
+        {
+          "feature": "srv_rerror_rate",
+          "real_raw_mean": 0.024390242993831635,
+          "scaled_wasserstein": 0.15172771789887618,
+          "synthetic_raw_mean": 0.1751726269721985
+        },
+        {
+          "feature": "dst_host_rerror_rate",
+          "real_raw_mean": 0.04756097495555878,
+          "scaled_wasserstein": 0.10742135345675059,
+          "synthetic_raw_mean": 0.154982328414917
+        }
+      ],
+      "real_fit_count": 41,
+      "synthetic_count": 36365,
+      "synthetic_to_real_ratio": 886.9512195121952
+    }
+  ],
+  "seed_order": [
+    11,
+    22,
+    33
+  ],
+  "source_table_sha256": {
+    "results/benchmark/nsl-kdd-v1/fedavg-gan/seed-11/round-metrics.csv": "4f94721976e676645ff0a5c6610690be322cde88be255eba087e2d3c262b3975",
+    "results/benchmark/nsl-kdd-v1/fedavg-gan/seed-22/round-metrics.csv": "a52ce50d516c1e0c692072fbe5951669ed8f9a2c52b1089bef1f7b196fa10c84",
+    "results/benchmark/nsl-kdd-v1/fedavg-gan/seed-33/round-metrics.csv": "551f35e85cc5d4966c865d06e7646a1e0da049686ac8025fbcf13c73c479dbb8",
+    "results/benchmark/nsl-kdd-v1/fedavg-real/seed-11/round-metrics.csv": "2d7d415d1845932faae6aba58967d72f7805449d5cb33a1cd96d615781f1850b",
+    "results/benchmark/nsl-kdd-v1/fedavg-real/seed-22/round-metrics.csv": "fed1aa5e8ea25059850fd64d98ef442a32754a35d3162ea2458001d0bf6ec677",
+    "results/benchmark/nsl-kdd-v1/fedavg-real/seed-33/round-metrics.csv": "4ee37df7575ccc7150d3b747dc20c2f88f0d031bcfb4dc43c3dd8fea7bcee41d",
+    "results/benchmark/nsl-kdd-v1/fedavg-ros/seed-11/round-metrics.csv": "49611ed5ab7c3eca60047765cde5b66c45cd563947da619bb9013c9b501c1d54",
+    "results/benchmark/nsl-kdd-v1/fedavg-ros/seed-22/round-metrics.csv": "c1de99b40c6292313c04ea4270436f3521864d524f83fccf348946b0a54b2d20",
+    "results/benchmark/nsl-kdd-v1/fedavg-ros/seed-33/round-metrics.csv": "9133dc386872ef1e90a084582cd200a22fd42e7521918a5e8f5b65ce63f0ccb6"
+  }
+}

@@ -120,7 +120,8 @@ def verify(root):
         fit_boundaries='passed',withheld_subtypes_excluded_from_fits=True,client_only_ros_lineage='passed',
         paired_initial_weights=True,paired_balanced_family_schedules=True,matched_update_budgets=True,
         pilot_decision_recomputed=True,test_re_evaluated=False,scope='exploratory validation only')
-    result['GAN_fit_bootstrap_lineage_verified'] = bool(p['gan'].get('family_balanced_fit',False))
+    result['GAN_fit_bootstrap_lineage'] = ('passed' if p['gan'].get('family_balanced_fit',False)
+                                           else 'not applicable: natural minority fit')
     (root/'verification.json').write_text(json.dumps(result,indent=2)+'\n')
     return result
 

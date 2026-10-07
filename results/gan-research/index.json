@@ -1,0 +1,83 @@
+{
+  "classifier_runs": 30,
+  "core_development_identical_across_studies": true,
+  "ctgan_fits": 6,
+  "feature_audit_sha256": "0a29fef5bfddb79c673e57b99b0d1ed17ae62f355e003302a5255b1ceee5ca0e",
+  "original_benchmark_code_sha256": "000727f981f5905b3675f046dce801e6e0df9815aee5d6f1c6795e958502c7a4",
+  "original_benchmark_source_unchanged": true,
+  "repeated_control_metrics": [
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-real",
+      "seed": 11
+    },
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-ros-025",
+      "seed": 11
+    },
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-ros-100",
+      "seed": 11
+    },
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-real",
+      "seed": 22
+    },
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-ros-025",
+      "seed": 22
+    },
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-ros-100",
+      "seed": 22
+    },
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-real",
+      "seed": 33
+    },
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-ros-025",
+      "seed": 33
+    },
+    {
+      "all_metrics_identical": true,
+      "arm": "balanced-ros-100",
+      "seed": 33
+    }
+  ],
+  "scope": "two exploratory development-only studies, three paired seeds per study",
+  "studies": [
+    {
+      "archive_bytes": 39400877,
+      "archive_members": 23,
+      "archive_sha256": "f91092a2078ef83f45e6a4a37b2e44b0df24b18827407de9ce7ac53da0465de7",
+      "meets_pilot_rule": {
+        "025": false,
+        "100": false
+      },
+      "plan_sha256": "549e8ce3774aaef3ef462062a138c37ee71d070c171df903765de9297035a2fd",
+      "study": "conditional-v1",
+      "verification_sha256": "61c302388e2bb71113aa695ef4d54793b115ab69258a601c62fe74228395816d"
+    },
+    {
+      "archive_bytes": 39719022,
+      "archive_members": 26,
+      "archive_sha256": "081951ec03122a38624d7834e0480e62c382785af095107edc5864663740dc16",
+      "meets_pilot_rule": {
+        "025": false,
+        "100": false
+      },
+      "plan_sha256": "407dd09c1c7ba5e7f0952f95082f819365c00e294b587e41f8fc5b4e3ebc69c6",
+      "study": "conditional-balanced-v1",
+      "verification_sha256": "85a13838eeb9405a70adeb3e4e09259706693d21b90389acf2c768ad0b2d254f"
+    }
+  ],
+  "test_re_evaluated": false
+}

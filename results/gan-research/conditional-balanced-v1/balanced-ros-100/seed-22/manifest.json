@@ -1,0 +1,34 @@
+{
+  "aggregation": "Flower FedAvg.aggregate_fit with original real core counts",
+  "arm": "balanced-ros-100",
+  "checkpoint_selection": "final round",
+  "checkpoint_sha256": "46d4a47906726a01afef4c33a45e8dc416c5e5bb31fed236a6c9b66b9af91b16",
+  "client_failures": 0,
+  "code_commit": "26e440bbd04234d72cbe1e2a2e72bad46662ab3d",
+  "code_sha256": "d0d5133251c94aca0803c93b92c7fd4cc1983e3293f039d5e1c6885bffb66529",
+  "command": "/Users/suhaill/Developement/Federated-Learning-NIDS/gan_research/pilot.py run --evidence results/gan-research/conditional-balanced-v1 --local .benchmark-local/conditional-balanced-v1",
+  "completed_rounds": 5,
+  "execution": "two serial in-process clients",
+  "exit_code": 0,
+  "flower": "1.8.0",
+  "initial_sha256": "7ef894e1eeb0272bd0a8d20cb6a524d1ad3e771e720550a0c8169ad7b8a72a7f",
+  "optimizer_state": "local Adam slots persist across rounds",
+  "optimizer_updates": 4050,
+  "plan_sha256": "407dd09c1c7ba5e7f0952f95082f819365c00e294b587e41f8fc5b4e3ebc69c6",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "pool_counts": [
+    51786,
+    51720
+  ],
+  "python": "3.9.6",
+  "real_client_counts": [
+    48259,
+    48222
+  ],
+  "seconds": 10.555075166999927,
+  "seed": 22,
+  "started_utc": "2026-10-07T23:30:31.850853+00:00",
+  "status": "completed",
+  "tensorflow": "2.15.1",
+  "test_evaluated": false
+}

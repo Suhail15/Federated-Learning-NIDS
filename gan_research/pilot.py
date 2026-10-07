@@ -289,7 +289,9 @@ def augment(evidence, local, seed):
     fit_rows = [dict(record_id=rid,family=int(label)) for rid,label in zip(d['core_ids'][minority],y[minority])]
     csv_write(out/'fit-ids.csv',list(fit_rows[0]),fit_rows)
     if cfg.get('family_balanced_fit',False):
-        bootstrap = [dict(index=j,source_record_id=d['core_ids'][minority][i],family=int(y[minority][i]))
+        # NPZ indexing decompresses its entire member; cache before the row loop.
+        minority_ids, minority_y = d['core_ids'][minority], y[minority]
+        bootstrap = [dict(index=j,source_record_id=minority_ids[i],family=int(minority_y[i]))
                      for j,i in enumerate(fit_indices)]
         csv_write(out/'gan-fit-lineage.csv',list(bootstrap[0]),bootstrap)
     lineage = []
@@ -472,7 +474,7 @@ def report(evidence):
             vals = [scores[(arm,s)][split]['macro_f1'] for s in SEEDS]
             ax.scatter([i-.08,i,i+.08],vals,s=32,color='#246a9c' if 'ctgan' not in arm else '#b85c19')
             ax.plot([i-.2,i+.2],[statistics.mean(vals)]*2,color='black',lw=2)
-        ax.set_xticks(range(5),labels,rotation=20); ax.set_ylabel('Macro F1 (all five families)')
+        ax.set_xticks(range(5),labels,rotation=20,ha='right'); ax.set_ylabel('Macro F1 (all five families)')
         ax.set_title(title); ax.grid(axis='y',alpha=.25)
     fig.suptitle('Conditional GAN pilot: development data only, three paired seeds')
     fig.savefig(evidence/'comparison.png',dpi=170); plt.close(fig)

@@ -1,0 +1,185 @@
+{
+  "arms": [
+    "balanced-real",
+    "balanced-ros-025",
+    "balanced-ctgan-025",
+    "balanced-ros-100",
+    "balanced-ctgan-100"
+  ],
+  "batch_size": 128,
+  "challenge_class_counts": [
+    13446,
+    734,
+    2310,
+    715,
+    7
+  ],
+  "checkpoint_selection": "final round, no checkpoint or epoch selection from evaluation",
+  "client_class_counts": [
+    [
+      26892,
+      17840,
+      3464,
+      45,
+      18
+    ],
+    [
+      26892,
+      17832,
+      3446,
+      36,
+      16
+    ]
+  ],
+  "created_utc": "2026-10-07T23:21:30.096588+00:00",
+  "development_sha256": "77f7d58b651a1ff0967428091f7654309f85d28b7c1fb3497d6b1e00f57e85ce",
+  "doses": {
+    "025": 0.25,
+    "100": 1.0
+  },
+  "evaluation_boundary": "development data only; KDDTest+ and test.npz never read by this pilot",
+  "experiment": "conditional-gan-validation-v1",
+  "exposure": "class-balanced batches, same label schedules and optimizer-update budgets across arms",
+  "gan": {
+    "adversarial_updates": 1394,
+    "batch_size": 500,
+    "conditional_label_filter": true,
+    "constraints": "domain projection and per-family constants from real core only",
+    "cuda": false,
+    "discrete_columns": [
+      "family",
+      "land",
+      "logged_in"
+    ],
+    "discriminator_decay": 1e-06,
+    "discriminator_dim": [
+      128,
+      128
+    ],
+    "discriminator_lr": 0.0002,
+    "discriminator_steps": 1,
+    "embedding_dim": 32,
+    "epochs": 34,
+    "family_balanced_fit": true,
+    "first_pilot_adversarial_updates": 1400,
+    "fit_rows_including_bootstrap": 20730,
+    "fit_scope": "pooled real core families 2,3,4 only",
+    "generator_decay": 1e-06,
+    "generator_dim": [
+      128,
+      128
+    ],
+    "generator_lr": 0.0002,
+    "library": "ctgan==0.11.0",
+    "log_frequency": true,
+    "max_sample_attempts_per_family": 30,
+    "pac": 10,
+    "rate_precision": 2,
+    "rdt": "1.14.0",
+    "rejection": "wrong conditional label, nonfinite, exact core pattern, exact generated duplicate",
+    "torch": "2.8.0",
+    "unique_real_fit_rows": 7025
+  },
+  "held_subtypes": [
+    "back",
+    "portsweep",
+    "warezclient",
+    "loadmodule"
+  ],
+  "learning_rate": 0.0001,
+  "mixed_validation_class_counts": [
+    13446,
+    9102,
+    2305,
+    199,
+    10
+  ],
+  "pilot_success": {
+    "confidence": "exploratory decision rule, not a significance test",
+    "controls": [
+      "balanced-real",
+      "matched-dose balanced-ros"
+    ],
+    "max_mean_fpr_increase_vs_each_control": 0.01,
+    "max_mean_secondary_f1_drop_vs_each_control": 0.01,
+    "min_mean_primary_gain_vs_both_controls": 0.01,
+    "positive_seeds_vs_each_control": 2
+  },
+  "preprocessing_sha256": "6b9373ee336f8ef837dd5d083a0363f250da926f0b0e8b6fec4bdb45bf7abe51",
+  "primary": "subtype-challenge macro F1; deliberately altered class mixture",
+  "prior_development_sha256": "33779b0dc3f462a71826fb20c1ed42d2765860b34a2ed5b6bfd001282ebcc6f6",
+  "prior_evidence": "nsl-kdd-v1",
+  "prior_exposure": "mixed validation was previously scored; subtype challenge was used in v1 training; neither is a new independent test",
+  "privacy": "pooled preparation and serial in-process Flower clients, no private-silo claim",
+  "quotas": {
+    "025": [
+      [
+        0,
+        0,
+        866,
+        12,
+        5
+      ],
+      [
+        0,
+        0,
+        862,
+        9,
+        4
+      ]
+    ],
+    "100": [
+      [
+        0,
+        0,
+        3464,
+        45,
+        18
+      ],
+      [
+        0,
+        0,
+        3446,
+        36,
+        16
+      ]
+    ]
+  },
+  "real_client_counts": [
+    48259,
+    48222
+  ],
+  "reduced_pattern_overlap": {
+    "core_challenge": 1708,
+    "core_mixed_validation": 3361
+  },
+  "rounds": 5,
+  "secondary": "mixed-validation macro F1",
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "source_file": "KDDTrain+.txt",
+  "source_sha256": "1b86d2f957b33082081bba410fe129b475efebcc13c9014c3f447c8271aadf95",
+  "splits_sha256": "7ef85a0df0ce0500d0c8d290e92386dced77633cc79a0c53fe40d5948f1fdc9a",
+  "status": "locked-before-new-training",
+  "steps_per_client_per_round": [
+    405,
+    405
+  ],
+  "subtype_holdout_counts": {
+    "back": 734,
+    "loadmodule": 7,
+    "portsweep": 2310,
+    "warezclient": 715
+  },
+  "training_class_counts": [
+    53784,
+    35672,
+    6910,
+    81,
+    34
+  ],
+  "version": 1
+}

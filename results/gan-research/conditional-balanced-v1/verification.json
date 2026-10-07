@@ -1,0 +1,19 @@
+{
+  "runs_verified": 15,
+  "ctgan_fits_verified": 3,
+  "core_training_records": 96481,
+  "challenge_records_per_run": 17212,
+  "mixed_validation_records_per_run": 25062,
+  "complete_unique_predictions": true,
+  "independent_metric_recomputation": "passed",
+  "fit_boundaries": "passed",
+  "withheld_subtypes_excluded_from_fits": true,
+  "client_only_ros_lineage": "passed",
+  "paired_initial_weights": true,
+  "paired_balanced_family_schedules": true,
+  "matched_update_budgets": true,
+  "pilot_decision_recomputed": true,
+  "test_re_evaluated": false,
+  "scope": "exploratory validation only",
+  "GAN_fit_bootstrap_lineage": "passed"
+}

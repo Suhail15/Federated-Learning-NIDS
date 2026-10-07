@@ -8,7 +8,7 @@ Network intrusion detection has two challenges explored here: learning from reco
 
 Capstone by [Suhail Hussain](https://github.com/Suhail15) · Status: research prototype with measured benchmark evidence
 
-[Evidence](#evidence-and-validation) · [Architecture](#architecture) · [Run benchmark](benchmark/README.md) · [Limitations](#limitations-and-evaluation-boundaries) · [Benchmark protocol](docs/benchmark-protocol.md) · [Results and full evidence](results/benchmark/nsl-kdd-v1/report.md)
+[Evidence](#evidence-and-validation) · [Architecture](#architecture) · [Run benchmark](benchmark/README.md) · [Limitations](#limitations-and-evaluation-boundaries) · [Benchmark protocol](docs/benchmark-protocol.md) · [Results and full evidence](results/benchmark/nsl-kdd-v1/report.md) · [GAN investigation](docs/gan-findings.md)
 
 ## Project at a glance
 
@@ -31,12 +31,13 @@ Historical smoke and current benchmark environment: **macOS ARM64 / Python 3.9**
 
 | Evidence | Verified result | Scope |
 | --- | --- | --- |
-| Partition and input tests | **9/9 passed** (includes the original 3 checks) | Adds duplicate-group isolation, scaler-fit provenance, held-out exclusion, parser rejection and metric checks to the original partition tests |
+| Automated checks | **15/15 passed** (includes the original 3 checks) | Covers partitions, duplicate-group isolation, scaler-fit provenance, held-out exclusion, parser/metrics, subtype boundaries, capped GAN doses and balanced class exposure |
 | Python compilation | All Python scripts compiled successfully | Syntax validation only |
 | Federated smoke test | **2 clients**, **1 training/evaluation round**, **1,000 sampled rows**, **0 client failures** | Confirms the local training/evaluation workflow completes; not a full training run or benchmark |
 | Dataset statistics | Before/after class counts are reported [below](#data-and-class-imbalance) | Describes class imbalance and augmentation volume, not detection quality |
 | New held-out benchmark | **12 DNN runs + 9 independent class-GAN fits completed** | Four configurations, three paired seeds, five rounds; evaluated on all 22,544 locally held KDDTest+ records after freezing checkpoints |
 | Independent evidence verification | **All 12 runs passed** | Metrics recomputed from saved predictions; complete test coverage, initial-weight pairing, update budgets and fit/oversampling provenance checked |
+| Conditional GAN investigation | **30 DNN runs + 6 CTGAN fits completed** | Two bounded development-only studies; capped doses and matched controls across the same three seeds; neither study establishes a GAN advantage |
 
 The historical smoke test used the augmented-before-split CSV and remains workflow evidence only. The new benchmark rebuilds preparation from raw records and separates real training/validation before fitting the scaler or GANs. Saved predictions, logs, hashes, class metrics and charts support the new measurements.
 
@@ -67,6 +68,12 @@ Measured on **22,544 real test records**, with no test-based checkpoint or hyper
 [Full results, limitations and downloadable evidence](results/benchmark/nsl-kdd-v1/report.md) · [Independent verification](results/benchmark/nsl-kdd-v1/independent-verification.json) · [Reproduce the benchmark](benchmark/README.md)
 
 Initial/final models and generated feature pools are retained outside Git. The downloadable evidence archive contains full split IDs, GAN fit IDs, oversampling lineage and per-record predictions; no raw feature records or model weights.
+
+## Investigating a better GAN recipe
+
+A separate [conditional GAN investigation](docs/gan-findings.md) tests mixed-type generation, smaller synthetic doses and family-balanced GAN fitting. All new fits exclude entire held-out attack subtypes; the original benchmark test set stays closed. On the development subtype challenge, CTGAN +25% scored **0.3630 ± 0.0071** macro F1 versus **0.3891 ± 0.0083** for matched oversampling. Rebalancing GAN fitting improved some generation diagnostics but did not improve detection; both doses and both attempts are published.
+
+The [training-only feature audit](results/gan-research/feature-audit.json) identifies omitted failed-login and root-shell fields as a concrete next hypothesis. Restoring those fields and testing whether GAN adds value beyond the expanded real-data model is **not yet run**. The reused validation and seven-record U2R challenge cannot establish fresh generalization.
 
 ## Architecture
 
@@ -100,6 +107,8 @@ The benchmark above fixes the leakage boundary. Its clients execute serially in 
 | --- | --- |
 | `benchmark/` | Raw preparation, independent class GANs, paired controls, frozen global checkpoints, held-out evaluation and evidence exports |
 | `results/benchmark/nsl-kdd-v1/` | Measured results, plots, logs, provenance and downloadable full evidence tables |
+| `gan_research/` | Optional CTGAN pilots with capped doses, subtype holdouts, balanced controls and training-only fit provenance |
+| `results/gan-research/` | Both exploratory outcomes, family metrics, generation diagnostics, feature audit and exact evidence archives |
 | `client.py` | Configurable local training client with repeatable, disjoint train/validation partitions |
 | `server.py` | Flower server with the original experimental momentum rule and a FedAvg comparison option |
 | `model.py` | Original DNN: **23 → 512 → 256 → 256 → 128 → 64 → 5**, ReLU, dropout, softmax |

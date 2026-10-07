@@ -34,22 +34,24 @@ python -m gan_research.pilot prepare \
   --raw-development ../nsl-kdd/KDDTrain+.txt \
   --prior-evidence results/benchmark/nsl-kdd-v1 \
   --prior-local .benchmark-local/nsl-kdd-v1 \
-  --evidence results/gan-research/conditional-v1 \
-  --local .benchmark-local/conditional-v1
+  --evidence results/gan-research/conditional-v1-reproduction \
+  --local .benchmark-local/conditional-v1-reproduction
 python -m gan_research.pilot run \
-  --evidence results/gan-research/conditional-v1 \
-  --local .benchmark-local/conditional-v1
-python scripts/verify_gan_pilot.py --evidence results/gan-research/conditional-v1
-python scripts/package_gan_pilot.py --evidence results/gan-research/conditional-v1
+  --evidence results/gan-research/conditional-v1-reproduction \
+  --local .benchmark-local/conditional-v1-reproduction
+python scripts/verify_gan_pilot.py --evidence results/gan-research/conditional-v1-reproduction
+python scripts/package_gan_pilot.py --evidence results/gan-research/conditional-v1-reproduction
 ```
 
-The prior local development arrays are produced by [v1 raw preparation](../benchmark/README.md). They preserve the exact audited IDs and client assignments; they are not shipped in Git. For an already populated evidence directory, extract `evidence-tables.tar.gz` first if verification needs its large tables. The run refuses to overwrite an evaluated pilot. Resuming completed training is allowed only with matching code and inputs.
+The prior local development arrays are produced by [v1 raw preparation](../benchmark/README.md). They preserve the exact audited IDs and client assignments; they are not shipped in Git. If rebuilding v1 into fresh directories, pass those paths as `--prior-evidence` and `--prior-local`. Use fresh output directories for new runs; the published experiment directories are already sealed. Extract their `evidence-tables.tar.gz` first if verification needs the large tables. Resuming completed training is allowed only with matching code and inputs.
+
+The recorded training commits are `a888763` for the natural-fit study and `26e440b` for the family-balanced follow-up. Later publication fixes cache repeated record-ID loading during export and align chart labels. The optimized exporter was checked against every original ordered bootstrap-lineage row in all three seeds; those fixes do not change training or measured checkpoints.
 
 Published evidence includes a locked plan, split/fit IDs, ROS lineage, CTGAN losses, conditional-sampling and projection audits, training-only distribution diagnostics, model/input/code hashes, client losses and label schedules, all family metrics, per-record probabilities, paired comparisons, an independent verification and a chart. Large ID/prediction tables are compressed; raw feature records, model weights, generated arrays and pickled CTGAN objects remain outside Git.
 
 ## One targeted follow-up
 
-The first pilot did not improve the matched controls. Its training-only audits showed that Probe dominated the shared fit and rare-family conditional outputs poorly matched real rare-family features. The follow-up enables `prepare --balance-gan-fit` and uses experiment/output directories `conditional-balanced-v1`. Every unique core minority record is retained, then additional real copies are bootstrapped to equal family counts **inside GAN fitting only**. Exact source-row lineage is retained. This reweights existing evidence; it does not create more real observations.
+The first pilot did not improve the matched controls. Its training-only audits showed that Probe dominated the shared fit and rare-family conditional outputs poorly matched real rare-family features. The follow-up enables `prepare --balance-gan-fit`; for a new run use fresh directories such as `conditional-balanced-v1-reproduction`. Every unique core minority record is retained, then additional real copies are bootstrapped to equal family counts **inside GAN fitting only**. Exact source-row lineage is retained. This reweights existing evidence; it does not create more real observations.
 
 The same 7,025 unique real records give 20,730 GAN fit rows. Epochs are mechanically reduced from 100 to 34: 1,394 adversarial updates versus the first pilot's 1,400. DNN controls, split boundaries, output doses, final-checkpoint rule and decision thresholds stay the same. All three seeds and both doses are retained. The design follows the first pilot's results and diagnostics, so its findings remain exploratory. No further tuning is hidden.
 
